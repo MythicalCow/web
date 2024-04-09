@@ -28,7 +28,7 @@ export default function Home() {
                       <div className="  bg-white">
                           <div className="flex items-center justify-left w-full h-full ps-0">
                               <div className="w-full pr-10">
-                                  <h1 className="text-6xl font-extrabold text-black w-full pb-5">Hi, I'm Raghav</h1>
+                                  <h1 className="text-6xl font-extrabold text-black w-full pb-5">Hi, I am Raghav</h1>
                                   <p className="text-2xl font-normal text-black w-full pb-5">embedded software | AI/ML/CV | design</p>
                               </div>
                           </div>
