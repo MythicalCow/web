@@ -144,9 +144,9 @@ export default function Home() {
 
   return (
     <main className="bg-[#141414] flex min-h-screen flex-col items-center justify-between">
-      <div id="home" className="bg-[#141414] w-full h-screen relative pb-60"> {/* Added relative for mobile menu positioning */}
+      <div id="home" className="bg-[#141414] w-full h-screen"> {/* Added relative for mobile menu positioning */}
         {/* Centered Text */}
-        <div className="text-white text-center h-screen w-screen py-[50vh]">
+        <div className="text-white text-center h-screen w-screen flex flex-col items-center justify-center mb-20 sm:mb-40">
           <div className="" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {shapes.map((shape) => (
               <FloatingShape
