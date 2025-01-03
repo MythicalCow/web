@@ -181,7 +181,7 @@ export default function Home() {
 
                 {/* Mobile Menu */}
                 {isMobileMenuOpen && (
-                  <div className="absolute top-full right-0 bg-[#1a1a1a]/20 backdrop-blur-md rounded-b-lg border-b border-[#1b1b1b]/100 py-4 w-full lg:hidden z-10"> {/* Added w-full and lg:hidden */}
+                  <div className="absolute top-14 right-0 bg-[#1a1a1a]/20 backdrop-blur-md rounded-b-lg border-b border-[#1b1b1b]/100 py-4 w-full lg:hidden z-10 pr-2"> {/* Adjusted top to 14 */}
                     <div className="flex flex-col items-end"> {/* Right-aligned content */}
                       <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200 font-medium py-2">HOME</a>
                       <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200 font-medium py-2">ABOUT</a>
