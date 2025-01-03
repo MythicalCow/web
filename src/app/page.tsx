@@ -91,6 +91,13 @@ const updateTitle = () => {
   }
 };
 
+const handleNavClick = (sectionId: string) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 export default function Home() {
   const [shapes, setShapes] = useState<{ id: number; color: string; position: { x: number; y: number }; size: number }[]>([]);
   
@@ -137,7 +144,7 @@ export default function Home() {
 
   return (
     <main className="bg-[#141414] flex min-h-screen flex-col items-center justify-between">
-      <div className="bg-[#141414] w-full h-screen relative pb-60"> {/* Added relative for mobile menu positioning */}
+      <div id="home" className="bg-[#141414] w-full h-screen relative pb-60"> {/* Added relative for mobile menu positioning */}
         {/* Centered Text */}
         <div className="text-white text-center h-screen w-screen py-[50vh]">
           <div className="" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -156,23 +163,23 @@ export default function Home() {
         </div>
 
         {/* Navbar */}
-        <div className="fixed top-0 w-full px-4 pt-4 z-50">
+        <div id="home" className="fixed top-0 w-full px-4 pt-4 z-50 ">
           <nav className="mx-auto max-w-6xl bg-[#1a1a1a]/20 backdrop-blur-md rounded-full border border-[#1b1b1b]/100">
             <div className="px-6 lg:px-8">
               <div className="grid grid-cols-3 items-center h-14 relative"> {/* Added relative here too */}
                 <div className="w-[104px] hidden lg:block bg-[#1a1a1a]/20"></div>
 
                 <div className="flex items-center justify-center space-x-8 lg:flex hidden"> {/* Hide on mobile */}
-                  <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200 font-medium">HOME</a>
-                  <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200 font-medium">ABOUT</a>
-                  <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200 font-medium">POSTS</a>
+                  <button onClick={() => handleNavClick('home')} className="text-white hover:text-gray-300 transition-colors duration-200 font-medium">HOME</button>
+                  <button onClick={() => handleNavClick('about')} className="text-white hover:text-gray-300 transition-colors duration-200 font-medium">ABOUT</button>
+                  <button onClick={() => handleNavClick('posts')} className="text-white hover:text-gray-300 transition-colors duration-200 font-medium">CONTACT</button>
                 </div>
 
                 <div className="flex items-center justify-end space-x-6">
                   <div className="lg:flex hidden space-x-6"> {/* Hide on mobile */}
-                    <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200"><XLogo size={32} /></a>
-                    <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200"><LinkedinLogo size={32} /></a>
-                    <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200"><GithubLogo size={32} /></a>
+                    <a href="https://x.com/raghav_tiru" className="text-white hover:text-gray-300 transition-colors duration-200"><XLogo size={32} /></a>
+                    <a href="https://www.linkedin.com/in/raghavtirumale/" className="text-white hover:text-gray-300 transition-colors duration-200"><LinkedinLogo size={32} /></a>
+                    <a href="https://github.com/MythicalCow" className="text-white hover:text-gray-300 transition-colors duration-200"><GithubLogo size={32} /></a>
                   </div>
                   <button onClick={toggleMobileMenu} className="lg:hidden text-white absolute right-0"> {/* Mobile menu button */}
                     <List size={32} />
@@ -183,13 +190,13 @@ export default function Home() {
                 {isMobileMenuOpen && (
                   <div className="absolute top-full right-0 bg-[#1a1a1a]/20 backdrop-blur-md rounded-b-lg border-b border-[#1b1b1b]/100 py-4 w-full lg:hidden z-10 pr-2"> {/* Adjusted top to 14 */}
                     <div className="flex flex-col items-end"> {/* Right-aligned content */}
-                      <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200 font-medium py-2">HOME</a>
-                      <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200 font-medium py-2">ABOUT</a>
-                      <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200 font-medium py-2">POSTS</a>
+                      <a href="#home" className="text-white hover:text-gray-300 transition-colors duration-200 font-medium py-2">HOME</a>
+                      <a href="#about" className="text-white hover:text-gray-300 transition-colors duration-200 font-medium py-2">ABOUT</a>
+                      <a href="#posts" className="text-white hover:text-gray-300 transition-colors duration-200 font-medium py-2">CONTACT</a>
                       <div className="flex space-x-6 mt-4">
-                        <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200"><XLogo size={32} /></a>
-                        <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200"><LinkedinLogo size={32} /></a>
-                        <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200"><GithubLogo size={32} /></a>
+                        <a href="https://x.com/raghav_tiru" className="text-white hover:text-gray-300 transition-colors duration-200"><XLogo size={32} /></a>
+                        <a href="https://www.linkedin.com/in/raghavtirumale/" className="text-white hover:text-gray-300 transition-colors duration-200"><LinkedinLogo size={32} /></a>
+                        <a href="https://github.com/MythicalCow" className="text-white hover:text-gray-300 transition-colors duration-200"><GithubLogo size={32} /></a>
                       </div>
                     </div>
                   </div>
@@ -200,24 +207,46 @@ export default function Home() {
         </div>
       </div>
       {/* about section */}
-      <section className="bg-[#1a1a1a]/20 backdrop-blur-md rounded-2xl px-8 py-16 mx-auto mt-16 max-w-4xl ml-4 mr-4">
+      <div className="h-screen w-screen flex items-center justify-center">
+        <section id="about" className="bg-[#1a1a1a]/20 backdrop-blur-md rounded-2xl px-8 py-16 mx-auto mt-16 max-w-4xl">
+        <h2 className="text-4xl text-white font-semibold mb-8">INTERESTS</h2>
+        <div className="text-2xl text-gray-400 leading-relaxed">
+        <p className="mb-6">
+          startups, hard problems, design thinking, writing, meditation.
+        </p>
+        </div>
         <h2 className="text-4xl text-white font-semibold mb-8">BIO</h2>
         <div className="text-2xl text-gray-400 leading-relaxed">
-          <p className="mb-6">
-            Currently building systems to detect and disrupt unmanned aerial systems at Guardian RF (YC S24).
-          </p>
-          <p className="mb-6">
-            Worked at Khoj AI (YC S23) to build an open-source AI assistant that currently has 17k+ stars on GitHub.
-          </p>
-          <p className="mb-6">
-            Worked as an embedded software lead at Illinois Electric Motorsports, a premier college FSAE team.
-          </p>
-          <p className="mb-6">
-            Computer Engineering @ UIUC
-          </p>
-        </div>
-      </section>
+        <p className="mb-6">
+          Currently building systems to detect and disrupt unmanned aerial systems at Guardian RF (YC S24).
+        </p>
+        <p className="mb-6">
+          Worked at Khoj AI (YC S23) to build an open-source AI assistant that currently has 17k+ stars on GitHub.
+        </p>
+        <p className="mb-6">
+          Worked as an embedded software lead at Illinois Electric Motorsports, a premier college FSAE team.
+        </p>
+        <p className="mb-6">
+          Computer Engineering @ UIUC
+        </p>
+        <p className="mb-6">
+          Worked on humanoid robots and self-driving cars in high school.
+        </p>
+          </div>
+        </section>
+      </div>
 
+      {/* contact section */}
+      <div className="h-screen w-screen flex items-center justify-center">
+        <section id="posts" className="bg-[#1a1a1a]/20 backdrop-blur-md rounded-2xl px-8 py-16 mx-auto mt-16 max-w-4xl">
+          <h2 className="text-4xl text-white font-semibold mb-8">CONTACT</h2>
+          <div className="text-2xl text-gray-400 leading-relaxed">
+        <p className="mb-6">
+          I love talking with people building cool things. Email me at <a href="mailto:raghavt3@illinois.edu" className="text-blue-400 hover:underline">raghavt3@illinois.edu</a>
+        </p>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }
