@@ -136,8 +136,8 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-[#141414] flex min-h-screen flex-col items-center justify-between bg-white">
-      <div className="bg-[#141414] w-full h-screen overflow-hidden relative"> {/* Added relative for mobile menu positioning */}
+    <main className="bg-[#141414] flex min-h-screen flex-col items-center justify-between">
+      <div className="bg-[#141414] w-full h-screen relative pb-60"> {/* Added relative for mobile menu positioning */}
         {/* Centered Text */}
         <div className="text-white text-center h-screen w-screen py-[50vh]">
           <div className="" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -150,7 +150,7 @@ export default function Home() {
               />
             ))}
           </div>
-          <h1 className="mx-auto text-8xl">HI, I&apos;M RAGHAV</h1>
+          <h1 className="mx-auto text-8xl pl-4 pr-4">HI, I&apos;M RAGHAV</h1>
           <h1 id="rotating-title" className="mx-auto text-4xl pt-20">COMPUTER ENGINEER</h1>
           <h1 id="rotating-title" className="mx-auto text-4xl text-gray-500 pt-2">@ {'UIUC'}</h1>
         </div>
@@ -199,6 +199,25 @@ export default function Home() {
           </nav>
         </div>
       </div>
+      {/* about section */}
+      <section className="bg-[#1a1a1a]/20 backdrop-blur-md rounded-2xl px-8 py-16 mx-auto mt-16 max-w-4xl ml-4 mr-4">
+        <h2 className="text-4xl text-white font-semibold mb-8">BIO</h2>
+        <div className="text-2xl text-gray-400 leading-relaxed">
+          <p className="mb-6">
+            Currently building systems to detect and disrupt unmanned aerial systems at Guardian RF (YC S24).
+          </p>
+          <p className="mb-6">
+            Worked at Khoj AI (YC S23) to build an open-source AI assistant that currently has 17k+ stars on GitHub.
+          </p>
+          <p className="mb-6">
+            Worked as an embedded software lead at Illinois Electric Motorsports, a premier college FSAE team.
+          </p>
+          <p className="mb-6">
+            Computer Engineering @ UIUC
+          </p>
+        </div>
+      </section>
+
     </main>
   );
 }
