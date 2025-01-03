@@ -150,7 +150,7 @@ export default function Home() {
               />
             ))}
           </div>
-          <h1 className="mx-auto text-8xl">HI, I'M RAGHAV</h1>
+          <h1 className="mx-auto text-8xl">HI, I&apos;M RAGHAV</h1>
           <h1 id="rotating-title" className="mx-auto text-4xl pt-20">COMPUTER ENGINEER</h1>
           <h1 id="rotating-title" className="mx-auto text-4xl text-gray-500 pt-2">@ {'UIUC'}</h1>
         </div>
