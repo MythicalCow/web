@@ -9,7 +9,7 @@ featured: true
 draft: false
 ---
 
-![Gray-Scott Reaction Diffusion Hero](/blog/reaction-diffusion/hero-image.png)
+![](/blog/reaction-diffusion/hero-image.png)
 
 # Introduction
 
@@ -523,11 +523,11 @@ If you're working on systems that push the boundary of performance in research o
 
 # Photo Gallery
 
-![Simulation Result 1](/blog/reaction-diffusion/simulation-result-1.png)
+![](/blog/reaction-diffusion/simulation-result-1.png)
 
-![Simulation Result 2](/blog/reaction-diffusion/simulation-result-2.png)
+![](/blog/reaction-diffusion/simulation-result-2.png)
 
-![Simulation Result 3](/blog/reaction-diffusion/simulation-result-3.png)
+![](/blog/reaction-diffusion/simulation-result-3.png)
 
 # Code
 
