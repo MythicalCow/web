@@ -465,12 +465,10 @@ After making these changes, we reduced the runtime from the previous iteration b
 
 Here is a summary of the average runtime of all the Gray-Scott experiments I worked on. So now, within that final 5.6 seconds of runtime, what is happening? I decided to profile different portions to explore the breakdown of timings.
 
-| Duration (secs) | Description                                 |
-| --------------- | ------------------------------------------- |
-| 1.99            | calls to `update()`                         |
-| 0.69            | batched handling of `cybermap`              |
-| 0.68            | maintenance of batched buffer of V species |
-| 2.17            | CPU-bound video write to file.              |
+- **1.99 seconds** - calls to `update()`
+- **0.69 seconds** - batched handling of `cybermap`
+- **0.68 seconds** - maintenance of batched buffer of V species
+- **2.17 seconds** - CPU-bound video write to file
 
 Just from looking at these timings, we can see that improving the performance of the update function and having better I/O handling for the video write process can still yield additional performance increases. Currently, video write takes place after all frames have been computed, which is a process that can be pipelined with the computational portion. This will be investigated in the future. Additionally, we investigate how optimized these kernels are by exploring an Nsight Compute Report. I found that the documentation for interfacing Triton and Nsight Tooling is somewhat difficult to navigate, so I include this snippet here for how to run Nsight Compute jobs on Triton kernels:
 

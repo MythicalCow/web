@@ -127,9 +127,6 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                 className="max-w-full h-auto mx-auto rounded-lg shadow-lg"
                 style={{ width: "auto", height: "auto" }}
               />
-              {alt && (
-                <p className="text-sm text-gray-500 mt-2 italic">{alt}</p>
-              )}
             </div>
           ),
 
