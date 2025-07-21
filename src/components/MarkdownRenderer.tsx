@@ -4,8 +4,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+
 import Image from "next/image";
 import "katex/dist/katex.min.css";
 
@@ -60,15 +59,14 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
             return !isInline && match ? (
               <div className="my-4">
-                <SyntaxHighlighter
-                  style={oneDark}
-                  language={match[1]}
-                  PreTag="div"
-                  className="rounded-lg"
-                  {...props}
-                >
-                  {String(children).replace(/\n$/, "")}
-                </SyntaxHighlighter>
+                <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto">
+                  <code
+                    className={`language-${match[1]} text-gray-100 text-sm font-mono`}
+                    {...props}
+                  >
+                    {String(children).replace(/\n$/, "")}
+                  </code>
+                </pre>
               </div>
             ) : (
               <code
