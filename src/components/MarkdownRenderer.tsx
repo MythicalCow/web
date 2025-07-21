@@ -1,12 +1,13 @@
 "use client";
 
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import 'katex/dist/katex.min.css';
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import Image from "next/image";
+import "katex/dist/katex.min.css";
 
 interface MarkdownRendererProps {
   content: string;
@@ -38,32 +39,26 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
           // Paragraphs
           p: ({ children }) => (
-            <p className="mb-4 leading-relaxed text-gray-300">
-              {children}
-            </p>
+            <p className="mb-4 leading-relaxed text-gray-300">{children}</p>
           ),
 
           // Lists
           ul: ({ children }) => (
-            <ul className="mb-4 ml-6 list-disc text-gray-300">
-              {children}
-            </ul>
+            <ul className="mb-4 ml-6 list-disc text-gray-300">{children}</ul>
           ),
           ol: ({ children }) => (
-            <ol className="mb-4 ml-6 list-decimal text-gray-300">
-              {children}
-            </ol>
+            <ol className="mb-4 ml-6 list-decimal text-gray-300">{children}</ol>
           ),
           li: ({ children }) => (
-            <li className="mb-1 text-gray-300">
-              {children}
-            </li>
+            <li className="mb-1 text-gray-300">{children}</li>
           ),
 
           // Code blocks
-          code: ({ node, inline, className, children, ...props }) => {
-            const match = /language-(\w+)/.exec(className || '');
-            return !inline && match ? (
+          code: ({ className, children, ...props }) => {
+            const match = /language-(\w+)/.exec(className || "");
+            const isInline = !className;
+
+            return !isInline && match ? (
               <div className="my-4">
                 <SyntaxHighlighter
                   style={oneDark}
@@ -72,7 +67,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                   className="rounded-lg"
                   {...props}
                 >
-                  {String(children).replace(/\n$/, '')}
+                  {String(children).replace(/\n$/, "")}
                 </SyntaxHighlighter>
               </div>
             ) : (
@@ -116,8 +111,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             <a
               href={href}
               className="text-blue-400 hover:text-blue-300 underline transition-colors"
-              target={href?.startsWith('http') ? '_blank' : undefined}
-              rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+              target={href?.startsWith("http") ? "_blank" : undefined}
+              rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
             >
               {children}
             </a>
@@ -126,10 +121,13 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           // Images
           img: ({ src, alt }) => (
             <div className="my-6 text-center">
-              <img
-                src={src}
-                alt={alt}
+              <Image
+                src={src || ""}
+                alt={alt || ""}
+                width={800}
+                height={600}
                 className="max-w-full h-auto mx-auto rounded-lg shadow-lg"
+                style={{ width: "auto", height: "auto" }}
               />
               {alt && (
                 <p className="text-sm text-gray-500 mt-2 italic">{alt}</p>
@@ -138,22 +136,16 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           ),
 
           // Horizontal rule
-          hr: () => (
-            <hr className="my-8 border-gray-700" />
-          ),
+          hr: () => <hr className="my-8 border-gray-700" />,
 
           // Strong/Bold
           strong: ({ children }) => (
-            <strong className="font-bold text-white">
-              {children}
-            </strong>
+            <strong className="font-bold text-white">{children}</strong>
           ),
 
           // Emphasis/Italic
           em: ({ children }) => (
-            <em className="italic text-gray-200">
-              {children}
-            </em>
+            <em className="italic text-gray-200">{children}</em>
           ),
         }}
       >
