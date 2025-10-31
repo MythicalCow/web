@@ -14,42 +14,42 @@ interface MarkdownRendererProps {
 
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
-    <div className="prose prose-invert prose-lg max-w-none">
+    <div className="prose prose-lg max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkMath]}
         rehypePlugins={[rehypeKatex]}
         components={{
           // Headers
           h1: ({ children }) => (
-            <h1 className="text-3xl font-bold mt-8 mb-4 first:mt-0 text-white">
+            <h1 className="text-3xl font-semibold mt-8 mb-4 first:mt-0 text-[#282828]">
               {children}
             </h1>
           ),
           h2: ({ children }) => (
-            <h2 className="text-2xl font-bold mt-6 mb-3 text-white">
+            <h2 className="text-2xl font-semibold mt-6 mb-3 text-[#282828]">
               {children}
             </h2>
           ),
           h3: ({ children }) => (
-            <h3 className="text-xl font-bold mt-4 mb-2 text-white">
+            <h3 className="text-xl font-semibold mt-4 mb-2 text-[#282828]">
               {children}
             </h3>
           ),
 
           // Paragraphs
           p: ({ children }) => (
-            <p className="mb-4 leading-relaxed text-gray-300">{children}</p>
+            <p className="mb-4 leading-relaxed text-[#282828]">{children}</p>
           ),
 
           // Lists
           ul: ({ children }) => (
-            <ul className="mb-4 ml-6 list-disc text-gray-300">{children}</ul>
+            <ul className="mb-4 ml-6 list-disc text-[#282828]">{children}</ul>
           ),
           ol: ({ children }) => (
-            <ol className="mb-4 ml-6 list-decimal text-gray-300">{children}</ol>
+            <ol className="mb-4 ml-6 list-decimal text-[#282828]">{children}</ol>
           ),
           li: ({ children }) => (
-            <li className="mb-1 text-gray-300">{children}</li>
+            <li className="mb-1 text-[#282828]">{children}</li>
           ),
 
           // Code blocks
@@ -70,7 +70,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               </div>
             ) : (
               <code
-                className="bg-gray-800 px-2 py-1 rounded text-sm font-mono text-gray-200"
+                className="bg-gray-100 px-2 py-1 rounded text-sm font-mono text-[#282828] border border-gray-200"
                 {...props}
               >
                 {children}
@@ -80,7 +80,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
           // Blockquotes
           blockquote: ({ children }) => (
-            <blockquote className="border-l-4 border-blue-500 pl-4 my-4 italic text-gray-400 bg-gray-900/50 py-2">
+            <blockquote className="border-l-4 border-blue-600 pl-4 my-4 italic text-gray-600 bg-blue-50 py-2 rounded-r">
               {children}
             </blockquote>
           ),
@@ -88,18 +88,18 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           // Tables
           table: ({ children }) => (
             <div className="overflow-x-auto my-4">
-              <table className="min-w-full border-collapse border border-gray-700">
+              <table className="min-w-full border-collapse border border-gray-300">
                 {children}
               </table>
             </div>
           ),
           th: ({ children }) => (
-            <th className="border border-gray-700 px-4 py-2 bg-gray-800 text-left text-white font-semibold">
+            <th className="border border-gray-300 px-4 py-2 bg-gray-100 text-left text-[#282828] font-semibold">
               {children}
             </th>
           ),
           td: ({ children }) => (
-            <td className="border border-gray-700 px-4 py-2 text-gray-300">
+            <td className="border border-gray-300 px-4 py-2 text-[#282828]">
               {children}
             </td>
           ),
@@ -108,7 +108,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           a: ({ href, children }) => (
             <a
               href={href}
-              className="text-blue-400 hover:text-blue-300 underline transition-colors"
+              className="text-blue-600 hover:text-blue-700 underline transition-colors"
               target={href?.startsWith("http") ? "_blank" : undefined}
               rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
             >
@@ -124,23 +124,23 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                 alt={alt || ""}
                 width={800}
                 height={600}
-                className="max-w-full h-auto mx-auto rounded-lg shadow-lg"
+                className="max-w-full h-auto mx-auto rounded-lg shadow-md"
                 style={{ width: "auto", height: "auto" }}
               />
             </div>
           ),
 
           // Horizontal rule
-          hr: () => <hr className="my-8 border-gray-700" />,
+          hr: () => <hr className="my-8 border-gray-300" />,
 
           // Strong/Bold
           strong: ({ children }) => (
-            <strong className="font-bold text-white">{children}</strong>
+            <strong className="font-semibold text-[#282828]">{children}</strong>
           ),
 
           // Emphasis/Italic
           em: ({ children }) => (
-            <em className="italic text-gray-200">{children}</em>
+            <em className="italic text-[#282828]">{children}</em>
           ),
         }}
       >

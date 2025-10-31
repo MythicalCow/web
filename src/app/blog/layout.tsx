@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Navigation from "@/components/Navigation";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -11,12 +12,13 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[#141414] text-white">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-white text-[#282828]">
+      <Navigation />
+      <div className="max-w-4xl mx-auto px-6 py-32">
         <header className="mb-12">
-          <h1 className="text-4xl font-bold text-left">Posts</h1>
+          <h1 className="text-2xl font-medium text-left text-[#282828]">Posts</h1>
         </header>
-        <main className="max-w-4xl mx-auto">{children}</main>
+        <main>{children}</main>
       </div>
     </div>
   );
