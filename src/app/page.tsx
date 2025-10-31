@@ -43,7 +43,7 @@ export default function Home() {
           Raghav Tirumale
         </h1>
         <p className="text-base text-gray-600 leading-relaxed mb-12">
-          Building high-performance AI infrastructure and systems software at early-stage startups, optimizing kernels across GPUs and other specialized hardware to push the boundaries of what's possible.
+          Building high-performance AI infrastructure and systems software at early-stage startups, optimizing kernels across GPUs and other specialized hardware to push the boundaries of what&apos;s possible.
         </p>
 
         <div className="space-y-0">
