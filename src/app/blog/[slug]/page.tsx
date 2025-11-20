@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { getPostBySlug, getAllPostSlugs, formatDate } from "@/lib/blog";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
-import Navigation from "@/components/Navigation";
 
 export async function generateMetadata({
   params,
@@ -53,7 +52,6 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
   return (
     <div className="min-h-screen bg-white text-[#282828]">
-      <Navigation />
       <article className="max-w-4xl mx-auto px-6 py-32">
         {/* Back to Blog */}
         <Link

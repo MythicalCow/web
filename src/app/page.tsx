@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Navigation from "@/components/Navigation";
+import AsciiFluid from "@/components/AsciiFluid";
 
 const experiences = [
   {
@@ -37,8 +37,10 @@ const experiences = [
 export default function Home() {
   return (
     <main className="bg-white min-h-screen">
-      <Navigation />
       <div id="home" className="max-w-4xl mx-auto px-6 py-40">
+        <div className="mb-12 -mt-20">
+          <AsciiFluid />
+        </div>
         <h1 className="text-3xl font-medium text-[#282828] mb-4">
           Raghav Tirumale
         </h1>
