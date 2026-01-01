@@ -3,9 +3,6 @@ import React, { useState, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { 
-  Twitter,
-  Linkedin,
-  Github,
   Menu,
   X
 } from "lucide-react";
@@ -34,23 +31,10 @@ export default function Navigation() {
     }
   }, [pathname, handleNavClick]);
 
-  const handleContactClick = useCallback((e: React.MouseEvent) => {
-    if (pathname === "/") {
-      e.preventDefault();
-      handleNavClick("posts");
-    }
-  }, [pathname, handleNavClick]);
 
   const navItems = [
-    { label: "Home", href: "/", onClick: handleHomeClick },
-    { label: "Posts", href: "/blog" },
-    { label: "Contact", href: "/#posts", onClick: handleContactClick },
-  ];
-
-  const socialLinks = [
-    { href: "https://x.com/raghav_tiru", icon: Twitter, label: "Twitter" },
-    { href: "https://www.linkedin.com/in/raghavtirumale/", icon: Linkedin, label: "LinkedIn" },
-    { href: "https://github.com/MythicalCow", icon: Github, label: "GitHub" },
+    { label: "home", href: "/", onClick: handleHomeClick },
+    { label: "writing", href: "/blog" },
   ];
 
   const isActive = useCallback((href: string) => {
@@ -73,10 +57,10 @@ export default function Navigation() {
                   key={item.label}
                   href={item.href}
                   onClick={item.onClick}
-                  className={`text-sm font-medium transition-colors duration-150 ${
-                    active
-                      ? "text-[#282828]"
-                      : "text-gray-500 hover:text-[#282828]"
+                  className={`text-base font-medium transition-colors duration-150 ${
+                      active
+                        ? "text-[#282828]"
+                        : "text-gray-500 hover:text-[#282828]"
                   }`}
                 >
                   {item.label}
@@ -86,25 +70,18 @@ export default function Navigation() {
           </div>
           
           {/* Social Links & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
-            <div className="lg:flex hidden space-x-5">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-[#282828] transition-colors duration-150"
-                    aria-label={social.label}
-                  >
-                    <Icon size={18} />
-                  </a>
-                );
-              })}
+          <div className="flex items-center gap-6">
+            <div className="hidden lg:flex items-center gap-2">
+              <a href="https://x.com/raghav_tiru" target="_blank" rel="noopener noreferrer" className="text-base font-medium text-gray-500 hover:text-[#282828] transition-colors">
+                <span>↗</span> <span className="underline decoration-gray-300 decoration-[0.5px] underline-offset-2">twitter</span>
+              </a>
+              <a href="https://www.linkedin.com/in/raghavtirumale/" target="_blank" rel="noopener noreferrer" className="text-base font-medium text-gray-500 hover:text-[#282828] transition-colors">
+                <span>↗</span> <span className="underline decoration-gray-300 decoration-[0.5px] underline-offset-2">linkedin</span>
+              </a>
+              <a href="https://github.com/MythicalCow" target="_blank" rel="noopener noreferrer" className="text-base font-medium text-gray-500 hover:text-[#282828] transition-colors">
+                <span>↗</span> <span className="underline decoration-gray-300 decoration-[0.5px] underline-offset-2">github</span>
+              </a>
             </div>
-            
             <button
               onClick={toggleMobileMenu}
               className="lg:hidden text-[#282828]"
@@ -131,7 +108,7 @@ export default function Navigation() {
                         item.onClick?.(e);
                         setIsMobileMenuOpen(false);
                       }}
-                      className={`text-sm font-medium transition-colors duration-150 py-2 ${
+                      className={`text-base font-medium transition-colors duration-150 py-2 ${
                         active
                           ? "text-[#282828]"
                           : "text-gray-500 hover:text-[#282828]"
@@ -142,24 +119,16 @@ export default function Navigation() {
                   );
                 })}
                 
-                <div className="border-t border-gray-100 pt-4 mt-2">
-                  <div className="flex space-x-6">
-                    {socialLinks.map((social) => {
-                      const Icon = social.icon;
-                      return (
-                        <a
-                          key={social.label}
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-500 hover:text-[#282828] transition-colors duration-150"
-                          aria-label={social.label}
-                        >
-                          <Icon size={18} />
-                        </a>
-                      );
-                    })}
-                  </div>
+                <div className="border-t border-gray-100 pt-4 mt-2 flex flex-col gap-2">
+                  <a href="https://x.com/raghav_tiru" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#282828] transition-colors py-2">
+                    <span>↗</span> <span className="underline decoration-gray-300 decoration-[0.5px] underline-offset-2">twitter</span>
+                  </a>
+                  <a href="https://www.linkedin.com/in/raghavtirumale/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#282828] transition-colors py-2">
+                    <span>↗</span> <span className="underline decoration-gray-300 decoration-[0.5px] underline-offset-2">linkedin</span>
+                  </a>
+                  <a href="https://github.com/MythicalCow" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#282828] transition-colors py-2">
+                    <span>↗</span> <span className="underline decoration-gray-300 decoration-[0.5px] underline-offset-2">github</span>
+                  </a>
                 </div>
               </div>
             </div>
