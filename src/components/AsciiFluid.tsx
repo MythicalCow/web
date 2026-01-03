@@ -174,7 +174,7 @@ export default function AsciiFluid() {
     <div ref={containerRef} className="w-full flex justify-start overflow-hidden mt-2 mb-8" aria-hidden="true">
       <pre
         ref={preRef}
-        className="inline-block text-[11px] leading-[11px] font-mono whitespace-pre text-[#666] select-none"
+        className="inline-block text-[11px] leading-[11px] font-mono whitespace-pre text-[#666] dark:text-[#888] select-none transition-colors duration-300"
       />
     </div>
   );
