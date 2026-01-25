@@ -13,14 +13,83 @@ body {
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-rendering: geometricPrecision;
+}
+
+dark {
+  color-scheme: dark;
 }
 
 .font-mono {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
 }
 
+/* Production-grade glass morphism animations */
+@keyframes liquidGlassShimmer {
+  0% {
+    filter: brightness(1) contrast(1);
+  }
+  50% {
+    filter: brightness(1.05) contrast(1.02);
+  }
+  100% {
+    filter: brightness(1) contrast(1);
+  }
+}
+
+@keyframes glassPulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* Enhanced glass effect for titlebar */
+@supports (backdrop-filter: blur(20px)) {
+  .glass-effect {
+    backdrop-filter: blur(20px) saturate(125%);
+    -webkit-backdrop-filter: blur(20px) saturate(125%);
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .glass-effect.dark {
+    backdrop-filter: blur(20px) saturate(100%);
+    -webkit-backdrop-filter: blur(20px) saturate(100%);
+    background: rgba(10, 10, 10, 0.6);
+  }
+}
+
+/* Smooth animations for navigation items */
+@layer components {
+  .nav-link {
+    @apply transition-colors duration-200 ease-out;
+  }
+
+  .glass-nav {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Production-grade typography rendering */
+  .text-smooth {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+  }
+
+  /* Enhanced readability over glass */
+  .glass-text-contrast {
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  }
+
+  .glass-text-contrast.dark {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
 }
