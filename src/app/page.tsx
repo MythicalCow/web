@@ -38,7 +38,7 @@ export default function Home() {
             
             <div className="text-[#555] dark:text-[#a0a0a0] text-lg leading-relaxed max-w-2xl space-y-6 transition-colors duration-300">
                 <p>
-                    Headed to Anduril. Previously DeepGrove (YC S25) and 8VC Engineering Fellow.
+                    Headed to Anduril. Previously DeepGrove (YC S25). 8VC Engineering Fellow.
                 </p>
                 <p>
                     I write low-level code that makes machine intelligence run fast in the real world. Fell in love with working close to the metal early on and never looked back.
