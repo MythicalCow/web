@@ -6,7 +6,6 @@ import {
   Menu,
   X
 } from "lucide-react";
-import LiquidGlassEffect from "./LiquidGlassEffect";
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
