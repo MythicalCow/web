@@ -38,13 +38,13 @@ export default function Home() {
             
             <div className="text-[#555] dark:text-[#a0a0a0] text-lg leading-relaxed max-w-2xl space-y-6 transition-colors duration-300">
                 <p>
-                    Currently at DeepGrove (YC S25), headed to Anduril. 8VC Engineering Fellow.
+                    Headed to Anduril. Previously DeepGrove (YC S25) and 8VC Engineering Fellow.
                 </p>
                 <p>
-                    I write low-level code that makes machine intelligence run faster on hardware. Fell in love with working close to the metal early on and never looked back.
+                    I write low-level code that makes machine intelligence run fast in the real world. Fell in love with working close to the metal early on and never looked back.
                 </p>
                 <p>
-                    Outside of that I enjoy drinking teas, cook, meditate, solve sudoku way too fast, and enjoy long conversations with friends.
+                    Outside of that I drink a lot of tea, cook, meditate, solve sudoku way too fast, have long conversations with friends, and spend time in nature.
                 </p>
                 <p className="pt-2">
                     Say hi: tirumale [dot] raghav [at] gmail [dot] com
