@@ -1,58 +1,42 @@
-"use client";
+import FlowField from "@/components/FlowField";
 
-import React, { useState, useRef, useEffect } from "react";
-import AsciiFluid from "@/components/AsciiFluid";
-import Plug from "@/components/Plug";
+const k = "text-[#ededed]";
 
 export default function Home() {
-  const [isPlugged, setIsPlugged] = useState(true);
-  const graphicsCardRef = useRef<HTMLDivElement>(null);
-
-  // Apply dark mode to document
-  useEffect(() => {
-    if (isPlugged) {
-      document.documentElement.classList.remove("dark");
-    } else {
-      document.documentElement.classList.add("dark");
-    }
-  }, [isPlugged]);
-
   return (
-    <main className="bg-white dark:bg-[#0a0a0a] min-h-screen selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-300">
-      <div className="max-w-4xl mx-auto px-6 pt-32 pb-20">
-        
-        {/* Intro */}
-        <div>
-            <div ref={graphicsCardRef} className="relative">
-              <AsciiFluid />
-            </div>
-            <Plug 
-              isPlugged={isPlugged} 
-              onPlugChange={setIsPlugged}
-              graphicsCardRef={graphicsCardRef}
-            />
+    <main className="bg-[#0a0a0a] min-h-screen selection:bg-[#e8e8e8] selection:text-[#0a0a0a]">
+      <FlowField />
+      {/* Hero — full viewport, content anchored to bottom */}
+      <section className="min-h-screen flex flex-col justify-center px-8 md:px-16 py-32">
+        <div className="max-w-2xl">
 
-            <h1 className="text-4xl font-sans font-medium tracking-tight mb-8 text-[#111] dark:text-[#e5e5e5] transition-colors duration-300">
-                Raghav Tirumale
-            </h1>
-            
-            <div className="text-[#555] dark:text-[#a0a0a0] text-lg leading-relaxed max-w-2xl space-y-6 transition-colors duration-300">
-                <p>
-                    Headed to Anduril. Previously DeepGrove (YC S25). 8VC Engineering Fellow.
-                </p>
-                <p>
-                    I write low-level code that makes machine intelligence run fast in the real world. Fell in love with working close to the metal early on and never looked back.
-                </p>
-                <p>
-                    Outside of that I drink a lot of tea, cook, meditate, solve sudoku way too fast, have long conversations with friends, and spend time in nature.
-                </p>
-                <p className="pt-2">
-                    Say hi: tirumale [dot] raghav [at] gmail [dot] com
-                </p>
-            </div>
+          <h1 className="animate-fadeUp text-[2.75rem] md:text-[4rem] font-medium tracking-tight text-[#e8e8e8] mb-10 lowercase leading-[1.1]">
+            raghav tirumale
+          </h1>
+
+          <div className="animate-fadeUp-delay text-[#787878] text-base md:text-[1.05rem] leading-[1.75] space-y-5">
+            <p>
+              i went to <span className={k}>tjhsst</span> for high school, where i built things alongside really strong peers. a 6 ft tall <span className={k}>humanoid</span> we got far enough to move a leg and balance in sim, and a <span className={k}>real time voice ai</span>, an early agentic harness built on top of existing models.
+            </p>
+            <p>
+              i studied <span className={k}>computer engineering</span> at <span className={k}>uiuc</span> and finished in three years, most of it spent inside startups. an open source ai model i trained at <span className={k}>khoj</span> <span className={k}>(yc s23)</span>, rf and drone tracking at <span className={k}>guardian rf</span> <span className={k}>(yc s24)</span>, low bit inference at <span className={k}>deepgrove</span> <span className={k}>(yc s25)</span>, with grad classes on manycore parallel algorithms and machine learning systems in between. i also got to be in rooms with partners from places like <span className={k}>sequoia</span> and <span className={k}>y combinator</span>.
+            </p>
+            <p>
+              i&apos;m most interested in <span className={k}>space</span>, <span className={k}>defense</span>, <span className={k}>robotics</span>, <span className={k}>manufacturing</span>, and <span className={k}>longevity tech</span>, the places where software meets atoms under real stakes, and companies like <span className={k}>anduril</span>, <span className={k}>saronic</span>, <span className={k}>epirus</span>, and <span className={k}>cx2</span>. being an <span className={k}>8vc fellow</span> let me get closer to the companies i care about.
+            </p>
+            <p>
+              i&apos;ll be joining <span className={k}>anduril</span> shortly to work on the hardest problems along that thesis.
+            </p>
+            <p>
+              outside that i meditate, train, cook, drink tea, and have long conversations with friends.
+            </p>
+            <p className="text-[#484848] pt-1">
+              tirumale [dot] raghav [at] gmail [dot] com
+            </p>
+          </div>
+
         </div>
-
-      </div>
+      </section>
     </main>
   );
 }

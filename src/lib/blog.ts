@@ -25,6 +25,7 @@ export interface BlogPostMeta {
   readTime: string
   featured?: boolean
   draft?: boolean
+  external?: string
 }
 
 const postsDirectory = path.join(process.cwd(), 'src/posts')
@@ -50,6 +51,7 @@ export function getAllPosts(): BlogPostMeta[] {
           readTime: data.readTime || estimateReadTime(fileContents),
           featured: data.featured || false,
           draft: data.draft || false,
+          external: data.external || undefined,
         }
       })
       .filter(post => !post.draft)

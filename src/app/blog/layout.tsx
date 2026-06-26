@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "My personal blog with thoughts on technology and development",
+  title: "Writing",
+  description:
+    "Notes on GPU kernels, processor design, and making machine intelligence run fast.",
 };
 
 export default function BlogLayout({
@@ -11,11 +12,8 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-white text-[#282828]">
-      <div className="max-w-4xl mx-auto px-6 py-32">
-        <header className="mb-12">
-          <h1 className="text-2xl font-medium text-left text-[#282828]">Posts</h1>
-        </header>
+    <div className="min-h-screen bg-[#0a0a0a] text-[#c8c8c8]">
+      <div className="max-w-2xl mx-auto px-8 md:px-16 py-32">
         <main>{children}</main>
       </div>
     </div>

@@ -7,6 +7,7 @@ author: Tianhao Chen, Raghav Tirumale, and Vasunandan Dar
 readTime: 20 min read
 featured: true
 draft: false
+external: https://open.substack.com/pub/tianhaochen/p/inferencing-transformers-in-real?r=2qo6u2&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false
 ---
 
 **Read the full article:** [Inferencing Transformers in Real-Time](https://open.substack.com/pub/tianhaochen/p/inferencing-transformers-in-real?r=2qo6u2&utm_campaign=post&utm_medium=web&showWelcomeOnShare=false)
