@@ -74,6 +74,10 @@ export function getPostBySlug(slug: string): BlogPost | null {
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
 
+    if (data.draft) {
+      return null
+    }
+
     return {
       slug,
       title: data.title || 'Untitled',
@@ -97,6 +101,12 @@ export function getAllPostSlugs(): string[] {
     const fileNames = fs.readdirSync(postsDirectory)
     return fileNames
       .filter(fileName => fileName.endsWith('.md'))
+      .filter(fileName => {
+        const fullPath = path.join(postsDirectory, fileName)
+        const fileContents = fs.readFileSync(fullPath, 'utf8')
+        const { data } = matter(fileContents)
+        return !data.draft
+      })
       .map(fileName => fileName.replace(/\.md$/, ''))
   } catch (error) {
     console.error('Error reading post slugs:', error)

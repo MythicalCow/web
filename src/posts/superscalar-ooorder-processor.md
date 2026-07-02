@@ -6,7 +6,7 @@ tags: ['processor-design', 'computer-architecture', 'RISC-V', 'superscalar', 'ou
 author: Raghav Tirumale, Ishaan Desai, and Tianhao Chen
 readTime: 18 min read
 featured: true
-draft: false
+draft: true
 ---
 
 ## Advanced Features
