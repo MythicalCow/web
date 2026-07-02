@@ -4,24 +4,63 @@
 
 :root {
   color-scheme: dark;
+  --bg: #0a0a0b;
+  --ink: #f5f5f4;
+  --body: #a6a6a3;
+  --dim: #5c5c59;
+  --line: #1d1d1f;
 }
 
 body {
-  color: #c8c8c8;
-  background: #0a0a0a;
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
+  color: var(--body);
+  background: var(--bg);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .font-mono {
-  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+.utility {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+}
+
+.text-link {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+
+.text-link:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink);
+}
+
+.text-link:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.external-arrow {
+  display: inline-block;
+  transition: transform 150ms ease;
+}
+
+.text-link:hover .external-arrow {
+  transform: translate(1px, -1px);
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -30,15 +69,26 @@ body {
 }
 
 .animate-fadeUp {
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fadeUp 300ms ease-out both;
 }
 
 .animate-fadeUp-delay {
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  animation: fadeUp 300ms ease-out 100ms both;
 }
 
 .animate-fadeUp-delay2 {
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  animation: fadeUp 300ms ease-out 200ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @layer utilities {

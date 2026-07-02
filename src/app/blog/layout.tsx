@@ -12,7 +12,7 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#c8c8c8]">
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--body)]">
       <div className="max-w-2xl mx-auto px-8 md:px-16 py-32">
         <main>{children}</main>
       </div>

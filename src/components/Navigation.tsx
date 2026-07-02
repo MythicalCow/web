@@ -20,19 +20,18 @@ export default function Navigation() {
   ];
 
   return (
-    <div className="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-sm">
+    <div className="fixed top-0 w-full z-50 bg-[var(--bg)]/80 backdrop-blur-sm">
       <nav className="mx-auto max-w-none px-8 md:px-16 py-5">
         <div className="flex items-center justify-between">
-          {/* Nav links */}
           <div className="flex items-center gap-7">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className={`text-sm transition-colors duration-150 ${
+                className={`utility text-link ${
                   isActive(item.href)
-                    ? "text-[#c8c8c8]"
-                    : "text-[#484848] hover:text-[#888]"
+                    ? "text-[var(--body)]"
+                    : "text-[var(--dim)]"
                 }`}
               >
                 {item.label}
@@ -40,7 +39,6 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Social links — desktop */}
           <div className="hidden lg:flex items-center gap-5">
             {[
               { label: "twitter", href: "https://x.com/raghav_tiru" },
@@ -52,45 +50,43 @@ export default function Navigation() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-[#484848] hover:text-[#888] transition-colors"
+                className="utility text-link text-[var(--dim)]"
               >
-                {label} ↗
+                {label} <span className="external-arrow" aria-hidden>↗</span>
               </a>
             ))}
           </div>
 
-          {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-[#888]"
+            className="lg:hidden text-[var(--body)]"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
 
-        {/* Mobile menu */}
         {isMobileMenuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-[#0a0a0a] border-t border-[#161616] py-5 lg:hidden">
+          <div className="absolute top-full left-0 right-0 bg-[var(--bg)] py-5 lg:hidden">
             <div className="px-8 flex flex-col gap-4">
               {navItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`text-sm ${isActive(item.href) ? "text-[#c8c8c8]" : "text-[#484848]"}`}
+                  className={`utility text-link ${isActive(item.href) ? "text-[var(--body)]" : "text-[var(--dim)]"}`}
                 >
                   {item.label}
                 </Link>
               ))}
-              <div className="border-t border-[#161616] pt-4 flex flex-col gap-3">
+              <div className="pt-4 flex flex-col gap-3">
                 {[
                   { label: "twitter", href: "https://x.com/raghav_tiru" },
                   { label: "linkedin", href: "https://www.linkedin.com/in/raghavtirumale/" },
                   { label: "github", href: "https://github.com/MythicalCow" },
                 ].map(({ label, href }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="text-sm text-[#484848]">
-                    {label} ↗
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="utility text-link text-[var(--dim)]">
+                    {label} <span className="external-arrow" aria-hidden>↗</span>
                   </a>
                 ))}
               </div>

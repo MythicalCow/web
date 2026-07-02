@@ -54,26 +54,26 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     <article className="max-w-[70ch]">
       <Link
         href="/blog"
-        className="text-[#484848] hover:text-[#888] mb-12 inline-block text-sm transition-colors"
+        className="utility text-link mb-12 inline-block text-[var(--dim)]"
       >
         ← writing
       </Link>
 
       <header className="mb-12">
-        <h1 className="text-3xl sm:text-4xl font-medium tracking-tight leading-tight mb-4 text-[#e8e8e8]">
+        <h1 className="text-3xl sm:text-4xl font-medium tracking-[-0.02em] leading-tight mb-4 text-[var(--ink)]">
           {post.title}
         </h1>
-        <div className="text-[#484848] text-sm">
+        <div className="utility text-[var(--dim)]">
           {formatDate(post.date)} · {post.readTime} · {post.author}
         </div>
       </header>
 
       <MarkdownRenderer content={post.content} />
 
-      <footer className="mt-16 pt-8 border-t border-[#161616]">
+      <footer className="mt-16 pt-8">
         <Link
           href="/blog"
-          className="text-[#484848] hover:text-[#888] transition-colors text-sm"
+          className="utility text-link text-[var(--dim)]"
         >
           ← writing
         </Link>

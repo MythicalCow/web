@@ -13,7 +13,7 @@ export default function BlogPage() {
   return (
     <div className="space-y-12">
       <header>
-        <h1 className="text-2xl font-medium tracking-tight text-[#e8e8e8] lowercase">
+        <h1 className="text-2xl font-medium tracking-[-0.02em] text-[var(--ink)] lowercase">
           writing
         </h1>
       </header>
@@ -23,30 +23,30 @@ export default function BlogPage() {
           posts.map((post) => (
             <article
               key={post.slug}
-              className="border-b border-[#161616] pb-10 last:border-b-0"
+              className="pb-10"
             >
               <div className="space-y-3">
-                <h2 className="text-lg font-medium text-[#c8c8c8] hover:text-[#e8e8e8] transition-colors">
+                <h2 className="text-lg font-medium">
                   {post.external ? (
-                    <a href={post.external} target="_blank" rel="noopener noreferrer">
-                      {post.title} <span aria-hidden>↗</span>
+                    <a className="text-link" href={post.external} target="_blank" rel="noopener noreferrer">
+                      {post.title} <span className="external-arrow" aria-hidden>↗</span>
                     </a>
                   ) : (
-                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                    <Link className="text-link" href={`/blog/${post.slug}`}>{post.title}</Link>
                   )}
                 </h2>
-                <div className="text-[#484848] text-sm">
+                <div className="utility text-[var(--dim)]">
                   {formatDate(post.date)} · {post.readTime}
                   {post.external && " · on Substack"}
                 </div>
-                <p className="text-[#787878] leading-relaxed text-sm">
+                <p className="text-sm leading-relaxed text-[var(--body)]">
                   {post.description}
                 </p>
               </div>
             </article>
           ))
         ) : (
-          <p className="text-[#484848] text-sm">nothing here yet.</p>
+          <p className="text-sm text-[var(--dim)]">nothing here yet.</p>
         )}
       </div>
     </div>
