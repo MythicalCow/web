@@ -26,6 +26,7 @@ export interface BlogPostMeta {
   featured?: boolean
   draft?: boolean
   external?: string
+  externalSource?: string
 }
 
 const postsDirectory = path.join(process.cwd(), 'src/posts')
@@ -52,6 +53,7 @@ export function getAllPosts(): BlogPostMeta[] {
           featured: data.featured || false,
           draft: data.draft || false,
           external: data.external || undefined,
+          externalSource: data.externalSource || undefined,
         }
       })
       .filter(post => !post.draft)

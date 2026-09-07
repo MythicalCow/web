@@ -13,7 +13,7 @@ export default function BlogLayout({
 }) {
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--body)]">
-      <div className="max-w-2xl mx-auto px-8 md:px-16 py-32">
+      <div className="mx-auto max-w-none px-8 pb-32 pt-32 md:px-16 md:pb-36 md:pt-40 lg:pt-64">
         <main>{children}</main>
       </div>
     </div>

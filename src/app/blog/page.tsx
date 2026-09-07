@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllPosts, formatDate } from "@/lib/blog";
+import LineSculpture from "@/components/LineSculpture";
 
 export const metadata = {
   title: "Writing",
@@ -11,19 +12,21 @@ export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <div className="space-y-12">
-      <header>
-        <h1 className="text-2xl font-medium tracking-[-0.02em] text-[var(--ink)] lowercase">
-          writing
-        </h1>
-      </header>
+    <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.68fr)] lg:gap-x-20">
+      <h1 className="sr-only">writing</h1>
 
-      <div className="space-y-10">
+      <LineSculpture
+        variant="palm"
+        interactive
+        className="mb-12 h-[270px] sm:h-[330px] lg:col-start-2 lg:row-start-1 lg:mb-0 lg:h-[470px]"
+      />
+
+      <div className="lg:col-start-1 lg:row-start-1">
         {posts.length > 0 ? (
           posts.map((post) => (
             <article
               key={post.slug}
-              className="pb-10"
+              className="border-t border-[var(--line)] py-8 first:border-t-0 first:pt-0 last:pb-0"
             >
               <div className="space-y-3">
                 <h2 className="text-lg font-medium">
@@ -37,7 +40,7 @@ export default function BlogPage() {
                 </h2>
                 <div className="utility text-[var(--dim)]">
                   {formatDate(post.date)} · {post.readTime}
-                  {post.external && " · on Substack"}
+                  {post.external && ` · on ${post.externalSource || "the web"}`}
                 </div>
                 <p className="text-sm leading-relaxed text-[var(--body)]">
                   {post.description}

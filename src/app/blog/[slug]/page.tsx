@@ -51,7 +51,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <article className="max-w-[70ch]">
+    <article className="mx-auto max-w-[70ch]">
       <Link
         href="/blog"
         className="utility text-link mb-12 inline-block text-[var(--dim)]"
@@ -59,7 +59,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         ← writing
       </Link>
 
-      <header className="mb-12">
+      <header className="mb-12 border-b border-[var(--line)] pb-10">
         <h1 className="text-3xl sm:text-4xl font-medium tracking-[-0.02em] leading-tight mb-4 text-[var(--ink)]">
           {post.title}
         </h1>

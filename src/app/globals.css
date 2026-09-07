@@ -3,12 +3,37 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: light;
+  --bg: #f4f1eb;
+  --surface: #ebe8e1;
+  --ink: #202526;
+  --ink-soft: #454b4b;
+  --body: #6f7675;
+  --body-prose: #626a69;
+  --dim: #8b9290;
+  --line: #d8d9d4;
+  --copper: #6f7878;
+  --copper-light: #9aa2a0;
+  --copper-dim: #858e8c;
+  --copper-rgb: 111, 120, 120;
+  --copper-light-rgb: 154, 162, 160;
+}
+
+html[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0a0a0b;
-  --ink: #f5f5f4;
-  --body: #a6a6a3;
-  --dim: #5c5c59;
-  --line: #1d1d1f;
+  --bg: #0b0a0a;
+  --surface: #12100f;
+  --ink: #f0ede9;
+  --ink-soft: #d7d2cc;
+  --body: #a7a19b;
+  --body-prose: #948e88;
+  --dim: #625c56;
+  --line: #27211e;
+  --copper: #c47d50;
+  --copper-light: #d99a6c;
+  --copper-dim: #a06643;
+  --copper-rgb: 196, 125, 80;
+  --copper-light-rgb: 217, 154, 108;
 }
 
 body {
@@ -39,21 +64,79 @@ body {
 
 .text-link:hover {
   color: var(--ink);
-  text-decoration-color: var(--ink);
+  text-decoration-color: var(--copper);
 }
 
 .text-link:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 2px solid var(--copper);
   outline-offset: 2px;
+}
+
+.keyword-link {
+  color: var(--ink-soft);
+  font-weight: 500;
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+
+.keyword-link:hover {
+  color: var(--ink);
+  text-decoration-color: var(--copper);
+}
+
+.keyword-link:focus-visible {
+  border-radius: 1px;
+  outline: 2px solid var(--copper);
+  outline-offset: 3px;
 }
 
 .external-arrow {
   display: inline-block;
+  color: var(--copper-dim);
   transition: transform 150ms ease;
 }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem 0.25rem;
+  color: var(--dim);
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--copper-dim);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 2px;
+}
+
+.theme-toggle-icon {
+  display: inline-flex;
+  width: 1rem;
+  height: 1rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.theme-toggle-icon.is-active {
+  color: var(--ink);
+  background: var(--surface);
+}
+
 .text-link:hover .external-arrow {
+  color: var(--copper);
   transform: translate(1px, -1px);
 }
 

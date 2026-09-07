@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
@@ -14,43 +12,43 @@ interface MarkdownRendererProps {
 
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
-    <div className="prose prose-lg max-w-none">
+    <div className="prose prose-lg max-w-none text-[var(--body-prose)]">
       <ReactMarkdown
         remarkPlugins={[remarkMath]}
         rehypePlugins={[rehypeKatex]}
         components={{
           h1: ({ children }) => (
-            <h1 className="text-3xl font-medium tracking-tight mt-12 mb-5 first:mt-0 text-[#e8e8e8]">
+            <h1 className="mb-5 mt-12 text-3xl font-medium tracking-[-0.02em] text-[var(--ink)] first:mt-0">
               {children}
             </h1>
           ),
           h2: ({ children }) => (
-            <h2 className="text-2xl font-medium tracking-tight mt-10 mb-4 text-[#e8e8e8]">
+            <h2 className="mb-4 mt-12 text-2xl font-medium tracking-[-0.02em] text-[var(--ink)]">
               {children}
             </h2>
           ),
           h3: ({ children }) => (
-            <h3 className="text-xl font-medium mt-8 mb-3 text-[#e8e8e8]">
+            <h3 className="mb-3 mt-9 text-xl font-medium text-[var(--ink)]">
               {children}
             </h3>
           ),
           h4: ({ children }) => (
-            <h4 className="text-lg font-medium mt-6 mb-2 text-[#e8e8e8]">
+            <h4 className="mb-2 mt-7 text-lg font-medium text-[var(--ink)]">
               {children}
             </h4>
           ),
           p: ({ children }) => (
-            <p className="mb-5 leading-relaxed text-[#787878]">
+            <p className="mb-5 leading-[1.75] text-[var(--body-prose)]">
               {children}
             </p>
           ),
           ul: ({ children }) => (
-            <ul className="mb-5 ml-6 list-disc text-[#787878] space-y-1">
+            <ul className="mb-5 ml-6 list-disc space-y-1 text-[var(--body-prose)] marker:text-[var(--copper-dim)]">
               {children}
             </ul>
           ),
           ol: ({ children }) => (
-            <ol className="mb-5 ml-6 list-decimal text-[#787878] space-y-1">
+            <ol className="mb-5 ml-6 list-decimal space-y-1 text-[var(--body-prose)] marker:text-[var(--copper-dim)]">
               {children}
             </ol>
           ),
@@ -60,10 +58,10 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             const isInline = !className;
 
             return !isInline && match ? (
-              <div className="my-6">
-                <pre className="bg-[#111] border border-[#1e1e1e] p-4 rounded-lg overflow-x-auto">
+              <div className="my-7">
+                <pre className="overflow-x-auto border border-[var(--line)] bg-[var(--surface)] p-5">
                   <code
-                    className={`language-${match[1]} text-gray-100 text-sm font-mono`}
+                    className={`language-${match[1]} font-mono text-sm text-[var(--ink-soft)]`}
                     {...props}
                   >
                     {String(children).replace(/\n$/, "")}
@@ -72,7 +70,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               </div>
             ) : (
               <code
-                className="bg-[#161616] border border-[#1e1e1e] px-1.5 py-0.5 rounded text-[0.9em] font-mono text-[#c8c8c8]"
+                className="border border-[var(--line)] bg-[var(--surface)] px-1.5 py-0.5 font-mono text-[0.9em] text-[var(--ink-soft)]"
                 {...props}
               >
                 {children}
@@ -80,31 +78,31 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             );
           },
           blockquote: ({ children }) => (
-            <blockquote className="border-l-2 border-[#2a2a2a] pl-4 my-6 text-[#585858]">
+            <blockquote className="my-7 border-l-2 border-[var(--copper-dim)] pl-5 text-[var(--body)]">
               {children}
             </blockquote>
           ),
           table: ({ children }) => (
-            <div className="overflow-x-auto my-6">
-              <table className="min-w-full border-collapse border border-[#1e1e1e]">
+            <div className="my-7 overflow-x-auto">
+              <table className="min-w-full border-collapse border border-[var(--line)]">
                 {children}
               </table>
             </div>
           ),
           th: ({ children }) => (
-            <th className="border border-[#1e1e1e] px-4 py-2 bg-[#111] text-left text-[#c8c8c8] font-medium">
+            <th className="border border-[var(--line)] bg-[var(--surface)] px-4 py-2 text-left font-medium text-[var(--ink-soft)]">
               {children}
             </th>
           ),
           td: ({ children }) => (
-            <td className="border border-[#1e1e1e] px-4 py-2 text-[#787878]">
+            <td className="border border-[var(--line)] px-4 py-2 text-[var(--body-prose)]">
               {children}
             </td>
           ),
           a: ({ href, children }) => (
             <a
               href={href}
-              className="text-[#c8c8c8] underline decoration-[#3a3a3a] decoration-[1px] underline-offset-2 hover:decoration-[#787878] transition-colors"
+              className="text-[var(--ink-soft)] underline decoration-[var(--copper-dim)] decoration-[1px] underline-offset-2 transition-colors hover:text-[var(--ink)] hover:decoration-[var(--copper)]"
               target={href?.startsWith("http") ? "_blank" : undefined}
               rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
             >
@@ -112,20 +110,20 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             </a>
           ),
           img: ({ src, alt }) => (
-            <figure className="my-8">
+            <span className="my-9 block">
               <Image
                 src={src || ""}
                 alt={alt || ""}
                 width={800}
                 height={600}
-                className="max-w-full h-auto mx-auto rounded-md"
+                className="mx-auto h-auto max-w-full border border-[var(--line)] bg-[var(--surface)]"
                 style={{ width: "auto", height: "auto" }}
               />
-            </figure>
+            </span>
           ),
-          hr: () => <hr className="my-10 border-[#1e1e1e]" />,
+          hr: () => <hr className="my-12 border-[var(--line)]" />,
           strong: ({ children }) => (
-            <strong className="font-semibold text-[#e8e8e8]">
+            <strong className="font-semibold text-[var(--ink-soft)]">
               {children}
             </strong>
           ),
