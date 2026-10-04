@@ -41,14 +41,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <link rel="preload" href="/sculptures/meditator.glb" as="fetch" crossOrigin="anonymous" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(() => { try { const theme = localStorage.getItem("theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (_) {} })();`,
-          }}
-        />
       </head>
       <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <Navigation />

@@ -8,11 +8,7 @@ const links = {
   guardianRf: "https://www.guardianrf.com/",
   deepgrove: "https://www.deepgrove.com/",
   anduril: "https://www.anduril.com/",
-  saronic: "https://www.saronic.com/",
-  epirus: "https://www.epirusinc.com/",
-  cx2: "https://www.cx2.com/",
   eightVc: "https://www.8vc.com/",
-  sequoia: "https://www.sequoiacap.com/",
   yCombinator: "https://www.ycombinator.com/",
 };
 
@@ -38,38 +34,39 @@ function Keyword({
 export default function Home() {
   return (
     <main className="home-page min-h-screen bg-[var(--bg)] selection:bg-[var(--ink)] selection:text-[var(--bg)]">
-      <section className="grid min-h-screen px-8 pb-20 pt-32 md:px-16 md:pb-28 md:pt-40 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.85fr)] lg:grid-rows-[auto_auto] lg:content-center lg:gap-x-14">
-        <header className="mb-9 lg:col-start-1 lg:row-start-1 lg:mb-12">
-          <h1 className="text-2xl font-medium tracking-[-0.02em] text-[var(--ink)] lowercase">
-            raghav tirumale
-          </h1>
-        </header>
+      <section className="grid min-h-screen px-8 pb-16 pt-32 md:px-16 md:pb-20 md:pt-40 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.85fr)] lg:items-start lg:content-center lg:gap-x-14">
+        <div className="contents lg:col-start-1 lg:block">
+          <header className="order-1 mb-8 lg:order-none lg:mb-10">
+            <h1 className="text-2xl font-medium tracking-[-0.02em] text-[var(--ink)] lowercase">
+              raghav tirumale
+            </h1>
+          </header>
+
+          <div className="order-3 max-w-[64ch] space-y-4 text-[1.05rem] leading-[1.7] text-[var(--body)] animate-fadeUp-delay lg:order-none">
+          <p>
+            i work on ml at <Keyword href={links.anduril}>anduril</Keyword>.
+          </p>
+          <p>
+            i&apos;ve wanted to build robots since i was a kid. at <Keyword href={links.tjhsst}>tjhsst</Keyword>, i attempted humanoids with friends and built a voice agent inspired by baymax for research.
+          </p>
+          <p>
+            i finished computer engineering at <Keyword href={links.uiuc}>uiuc</Keyword> in three years, with grad classes in manycore parallel algorithms and systems for generative ai. while there, i worked on applied ai at <Keyword href={links.khoj}>khoj</Keyword> (<Keyword href={links.yCombinator}>yc</Keyword> s23), built drone detection from raw rf at <Keyword href={links.guardianRf}>guardian rf</Keyword> (<Keyword href={links.yCombinator}>yc</Keyword> s24), and led inference at <Keyword href={links.deepgrove}>deepgrove</Keyword> (<Keyword href={links.yCombinator}>yc</Keyword> s25), pushing a frontier 20b parameter model past 200 tokens per second on commodity hardware.
+          </p>
+          <p>
+            i care most about machine intelligence and how to make it more reliable, performant, and widespread. as an <Keyword href={links.eightVc}>8vc fellow</Keyword>, i got a chance to hear from founders of some of the most ambitious companies.
+          </p>
+          <p>
+            outside work, i meditate, train, cook, drink tea, have long conversations with friends, and occasionally write.
+          </p>
+            <p className="pt-1 text-[var(--dim)]">
+              tirumale [dot] raghav [at] gmail [dot] com
+            </p>
+          </div>
+        </div>
 
         <MeditationSculpture
-          className="animate-fadeUp-delay2 mb-12 h-[330px] sm:h-[390px] lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mb-0 lg:h-[min(70vh,650px)] lg:self-center"
+          className="animate-fadeUp-delay2 order-2 mb-8 h-[330px] sm:h-[390px] lg:order-none lg:col-start-2 lg:row-start-1 lg:mb-0 lg:h-[min(70vh,650px)] lg:self-center"
         />
-
-        <div className="animate-fadeUp-delay max-w-[64ch] space-y-5 text-[1.05rem] leading-[1.75] text-[var(--body)] lg:col-start-1 lg:row-start-2">
-          <p>
-            i went to <Keyword href={links.tjhsst}>tjhsst</Keyword> for high school, where i built things alongside really strong peers. we built a 6 ft tall humanoid that got far enough to move a leg and balance in sim, and a real time voice ai, a primitive harness on top of existing models.
-          </p>
-          <p>
-            i studied computer engineering at <Keyword href={links.uiuc}>uiuc</Keyword> and finished in three years, most of it spent inside startups: applied ai at <Keyword href={links.khoj}>khoj</Keyword> (<Keyword href={links.yCombinator}>yc</Keyword> s23), rf and drone tracking at <Keyword href={links.guardianRf}>guardian rf</Keyword> (<Keyword href={links.yCombinator}>yc</Keyword> s24), low bit inference at <Keyword href={links.deepgrove}>deepgrove</Keyword> (<Keyword href={links.yCombinator}>yc</Keyword> s25), with grad classes on manycore parallel algorithms and machine learning systems in between.
-          </p>
-          <p>
-            i&apos;m most interested in defense, robotics, space, manufacturing, and longevity tech, the places where software meets atoms under real stakes, and companies like <Keyword href={links.anduril}>anduril</Keyword>, <Keyword href={links.saronic}>saronic</Keyword>, <Keyword href={links.epirus}>epirus</Keyword>, and <Keyword href={links.cx2}>cx2</Keyword>. being an <Keyword href={links.eightVc}>8vc fellow</Keyword> let me get closer to the companies i care about.
-          </p>
-          <p>
-            {/* after start date: "i'll be joining anduril shortly to work on" → "i work at anduril on" */}
-            i&apos;ll be joining <Keyword href={links.anduril}>anduril</Keyword> shortly to work on the hardest problems along that thesis.
-          </p>
-          <p>
-            outside that i meditate, train, cook, drink tea, and have long conversations with friends.
-          </p>
-          <p className="pt-1 text-[var(--dim)]">
-            tirumale [dot] raghav [at] gmail [dot] com
-          </p>
-        </div>
       </section>
     </main>
   );

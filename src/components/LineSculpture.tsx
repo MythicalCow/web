@@ -364,18 +364,6 @@ export default function LineSculpture({
         requestRender();
       }
 
-      function onThemeChange() {
-        uniforms.uCopper.value.set(getCssColor("--copper", "#b1744e"));
-        uniforms.uHighlight.value.set(getCssColor("--copper-light", "#c99169"));
-        requestRender();
-      }
-
-      const themeObserver = new MutationObserver(onThemeChange);
-      themeObserver.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["data-theme"],
-      });
-
       const resizeObserver = new ResizeObserver(resize);
       resizeObserver.observe(element);
       element.addEventListener("pointermove", onPointerMove);
@@ -384,7 +372,6 @@ export default function LineSculpture({
       element.addEventListener("pointerup", onPointerUp);
       document.addEventListener("visibilitychange", onVisibilityChange);
       motionQuery.addEventListener("change", onMotionChange);
-      window.addEventListener("themechange", onThemeChange);
       resize();
 
       cleanup = () => {
@@ -396,8 +383,6 @@ export default function LineSculpture({
         element.removeEventListener("pointerup", onPointerUp);
         document.removeEventListener("visibilitychange", onVisibilityChange);
         motionQuery.removeEventListener("change", onMotionChange);
-        window.removeEventListener("themechange", onThemeChange);
-        themeObserver.disconnect();
         group.remove(sculpture);
         geometry.dispose();
         material.dispose();

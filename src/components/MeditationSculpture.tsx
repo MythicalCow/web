@@ -261,17 +261,6 @@ export default function MeditationSculpture({ className = "" }: { className?: st
         requestRender();
       }
 
-      function onThemeChange() {
-        uniforms.uMetal.value.set(getCssColor("--copper", "#6f7878"));
-        requestRender();
-      }
-
-      const themeObserver = new MutationObserver(onThemeChange);
-      themeObserver.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["data-theme"],
-      });
-
       const resizeObserver = new ResizeObserver(resize);
       resizeObserver.observe(element);
       element.addEventListener("pointermove", onPointerMove);
@@ -279,7 +268,6 @@ export default function MeditationSculpture({ className = "" }: { className?: st
       element.addEventListener("pointerleave", onPointerLeave);
       document.addEventListener("visibilitychange", onVisibilityChange);
       motionQuery.addEventListener("change", onMotionChange);
-      window.addEventListener("themechange", onThemeChange);
       resize();
 
       cleanup = () => {
@@ -290,8 +278,6 @@ export default function MeditationSculpture({ className = "" }: { className?: st
         element.removeEventListener("pointerleave", onPointerLeave);
         document.removeEventListener("visibilitychange", onVisibilityChange);
         motionQuery.removeEventListener("change", onMotionChange);
-        window.removeEventListener("themechange", onThemeChange);
-        themeObserver.disconnect();
         figure.removeFromParent();
         geometry.dispose();
         surfaceMaterial.dispose();

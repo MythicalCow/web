@@ -113,7 +113,7 @@ export default function AsciiPlug({ isPlugged }: AsciiPlugProps) {
     <div ref={containerRef} className="inline-block overflow-hidden" aria-hidden="true">
       <pre
         ref={preRef}
-        className="inline-block text-[11px] leading-[11px] font-mono whitespace-pre text-[#666] dark:text-[#888] select-none transition-colors duration-300"
+        className="inline-block text-[11px] leading-[11px] font-mono whitespace-pre text-[#666] select-none transition-colors duration-300"
       />
     </div>
   );
