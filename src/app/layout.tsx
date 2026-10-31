@@ -11,11 +11,11 @@ export const metadata: Metadata = {
     template: "%s — Raghav Tirumale",
   },
   description:
-    "Engineer working close to the metal — GPU kernels, processor design, and real-time machine intelligence.",
+    "Software engineer working on machine learning, autonomy, and efficient systems.",
   openGraph: {
     title: "Raghav Tirumale",
     description:
-      "Engineer working close to the metal — GPU kernels, processor design, and real-time machine intelligence.",
+      "Software engineer working on machine learning, autonomy, and efficient systems.",
     type: "website",
     images: [
       {
@@ -30,21 +30,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Raghav Tirumale",
     description:
-      "Engineer working close to the metal — GPU kernels, processor design, and real-time machine intelligence.",
+      "Software engineer working on machine learning, autonomy, and efficient systems.",
     images: ["/opengraph-image"],
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preload" href="/sculptures/meditator.glb" as="fetch" crossOrigin="anonymous" />
-      </head>
       <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <Navigation />
         {children}
