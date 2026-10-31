@@ -1,155 +1,73 @@
-import Link from "next/link";
-import { getAllPosts } from "@/lib/blog";
+import type { ReactNode } from "react";
+import MeditationSculpture from "@/components/MeditationSculpture";
 
 const links = {
-  anduril: "https://www.anduril.com/",
+  tjhsst: "https://www.tjhsst.edu/",
   uiuc: "https://illinois.edu/",
-  deepgrove: "https://deepgrove.ai/",
-  guardianRf: "https://www.guardianrf.com/",
   khoj: "https://khoj.dev/",
+  guardianRf: "https://www.guardianrf.com/",
+  deepgrove: "https://www.deepgrove.com/",
+  anduril: "https://www.anduril.com/",
   eightVc: "https://www.8vc.com/",
+  yCombinator: "https://www.ycombinator.com/",
 };
 
-const selectedWork = [
-  {
-    name: "maple inference",
-    href: "https://deepgrove.ai/maple-inference",
-    detail: "running a 20b language model at 218 tokens/sec on a mac mini",
-  },
-  {
-    name: "leosim",
-    href: "https://github.com/MythicalCow/leosim",
-    detail: "simulating low-earth-orbit satellite networks, from propagation to routing",
-  },
-  {
-    name: "superscalar risc-v",
-    href: "https://github.com/MythicalCow/web/blob/main/superscalar/ECE411FinalReport.html",
-    detail: "a two-way out-of-order processor with register renaming and pipelined caches",
-  },
-];
-
-const linkStyle =
-  "font-medium text-[var(--ink)] underline decoration-[var(--line)] underline-offset-[3px] transition-colors hover:decoration-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ink)]";
-
-function ExternalLink({
+function Keyword({
   href,
   children,
 }: {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
-    <a className={linkStyle} href={href} target="_blank" rel="noopener noreferrer">
+    <a
+      className="font-medium text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ink)]"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       {children}
     </a>
   );
 }
 
-function SectionHeading({
-  id,
-  children,
-}: {
-  id: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <h2
-      id={id}
-      className="mb-4 text-[1.02rem] font-medium tracking-[-0.01em] text-[var(--ink)]"
-    >
-      {children}
-    </h2>
-  );
-}
-
 export default function Home() {
-  const posts = getAllPosts();
-
   return (
-    <main className="home-page min-h-screen bg-[var(--bg)] px-7 pb-24 pt-32 selection:bg-[var(--ink)] selection:text-[var(--bg)] sm:px-10 md:pt-36">
-      <div className="mx-auto max-w-[680px]">
-        <header className="mb-10">
-          <h1 className="text-[1.55rem] font-medium tracking-[-0.025em] text-[var(--ink)]">
-            raghav tirumale
-          </h1>
-        </header>
+    <main className="home-page min-h-screen bg-[var(--bg)] selection:bg-[var(--ink)] selection:text-[var(--bg)]">
+      <section className="grid min-h-screen px-8 pb-16 pt-32 md:px-16 md:pb-20 md:pt-40 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.85fr)] lg:items-start lg:content-center lg:gap-x-14">
+        <div className="contents lg:col-start-1 lg:block">
+          <header className="order-1 mb-8 lg:order-none lg:mb-10">
+            <h1 className="text-2xl font-medium tracking-[-0.02em] text-[var(--ink)] lowercase">
+              raghav tirumale
+            </h1>
+          </header>
 
-        <section aria-labelledby="intro" className="text-[1rem] leading-[1.75] text-[var(--ink-soft)]">
-          <SectionHeading id="intro">hi</SectionHeading>
-          <div className="space-y-4">
-            <p>
-              i work on ml at <ExternalLink href={links.anduril}>anduril</ExternalLink>,
-              where perception, autonomy, and systems meet.
-            </p>
-            <p>
-              before that, i led inference at{" "}
-              <ExternalLink href={links.deepgrove}>deepgrove</ExternalLink> (yc s25),
-              worked on rf sensing at{" "}
-              <ExternalLink href={links.guardianRf}>guardian rf</ExternalLink> (yc s24),
-              and applied ai at <ExternalLink href={links.khoj}>khoj</ExternalLink> (yc s23).
-              i studied computer engineering at{" "}
-              <ExternalLink href={links.uiuc}>uiuc</ExternalLink>, finishing in three years.
-            </p>
-            <p>
-              i&apos;ve wanted to build robots since i was a kid. these days,
-              i&apos;m most interested in how we make machine intelligence
-              more capable, efficient, and useful on real machines.
+          <div className="order-3 max-w-[64ch] space-y-4 text-[1.05rem] leading-[1.7] text-[var(--body)] animate-fadeUp-delay lg:order-none">
+          <p>
+            i work on ml at <Keyword href={links.anduril}>anduril</Keyword>.
+          </p>
+          <p>
+            i&apos;ve wanted to build robots since i was a kid. at <Keyword href={links.tjhsst}>tjhsst</Keyword>, i attempted humanoids with friends and built a voice agent inspired by baymax for research.
+          </p>
+          <p>
+            i finished computer engineering at <Keyword href={links.uiuc}>uiuc</Keyword> in three years, with grad classes in manycore parallel algorithms and systems for generative ai. while there, i worked on applied ai at <Keyword href={links.khoj}>khoj</Keyword> (<Keyword href={links.yCombinator}>yc</Keyword> s23), built drone detection from raw rf at <Keyword href={links.guardianRf}>guardian rf</Keyword> (<Keyword href={links.yCombinator}>yc</Keyword> s24), and led inference at <Keyword href={links.deepgrove}>deepgrove</Keyword> (<Keyword href={links.yCombinator}>yc</Keyword> s25), pushing a frontier 20b parameter model past 200 tokens per second on commodity hardware.
+          </p>
+          <p>
+            i care most about machine intelligence and how to make it more reliable, performant, and widespread. as an <Keyword href={links.eightVc}>8vc fellow</Keyword>, i got a chance to hear from founders of some of the most ambitious companies.
+          </p>
+          <p>
+            outside work, i meditate, train, cook, drink tea, have long conversations with friends, and occasionally write.
+          </p>
+            <p className="pt-1 text-[var(--dim)]">
+              tirumale [dot] raghav [at] gmail [dot] com
             </p>
           </div>
-        </section>
+        </div>
 
-        <section aria-labelledby="work" className="mt-11">
-          <SectionHeading id="work">things i&apos;ve built</SectionHeading>
-          <ul className="list-disc space-y-2 pl-5 text-[1rem] leading-[1.7] text-[var(--ink-soft)] marker:text-[var(--dim)]">
-            {selectedWork.map((item) => (
-              <li key={item.name} className="pl-1">
-                <ExternalLink href={item.href}>{item.name}</ExternalLink>
-                {" — "}{item.detail}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {posts.length > 0 && (
-          <section aria-labelledby="writing" className="mt-11">
-            <SectionHeading id="writing">sometimes i write</SectionHeading>
-            <ul className="list-disc space-y-2 pl-5 text-[1rem] leading-[1.7] text-[var(--ink-soft)] marker:text-[var(--dim)]">
-              {posts.map((post) => (
-                <li key={post.slug} className="pl-1">
-                  {post.external ? (
-                    <ExternalLink href={post.external}>
-                      {post.title.toLowerCase()}
-                    </ExternalLink>
-                  ) : (
-                    <Link className={linkStyle} href={`/blog/${post.slug}`}>
-                      {post.title.toLowerCase()}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-3 pl-6 text-sm text-[var(--body)]">
-              <Link className={linkStyle} href="/blog">
-                all writing
-              </Link>
-            </p>
-          </section>
-        )}
-
-        <section aria-labelledby="misc" className="mt-11">
-          <SectionHeading id="misc">misc</SectionHeading>
-          <div className="space-y-3 text-[1rem] leading-[1.75] text-[var(--ink-soft)]">
-            <p>
-              i&apos;m an <ExternalLink href={links.eightVc}>8vc engineering fellow</ExternalLink>.
-              outside of computers, i meditate, lift, cook, listen to music,
-              and spend time with friends.
-            </p>
-            <p>
-              say hi: <span className="text-[var(--body)]">tirumale [dot] raghav [at] gmail [dot] com</span>
-            </p>
-          </div>
-        </section>
-      </div>
+        <MeditationSculpture
+          className="animate-fadeUp-delay2 order-2 mb-8 h-[330px] sm:h-[390px] lg:order-none lg:col-start-2 lg:row-start-1 lg:mb-0 lg:h-[min(70vh,650px)] lg:self-center"
+        />
+      </section>
     </main>
   );
 }
