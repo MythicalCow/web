@@ -98,12 +98,12 @@ export default function Home() {
             </h1>
             <div className="space-y-3">
               <p>
-                i currently work on machine learning at <A href={links.anduril} className="whitespace-nowrap">anduril</A> and am an{" "}
-                <A href={links.eightVc} className="whitespace-nowrap">8vc fellow</A>.
+                i currently work on machine learning at <A href={links.anduril} className="whitespace-nowrap">anduril</A>.
               </p>
               <p>
-                previously i led inference at <A href={links.deepgrove} className="whitespace-nowrap">deepgrove</A> and worked on drone detection at{" "}
-                <A href={links.guardianRf} className="whitespace-nowrap">guardian rf</A>. i also studied computer engineering at the{" "}
+                previously i led inference at <A href={links.deepgrove} className="whitespace-nowrap">deepgrove</A>, worked on drone detection at{" "}
+                <A href={links.guardianRf} className="whitespace-nowrap">guardian rf</A>, and was an{" "}
+                <A href={links.eightVc} className="whitespace-nowrap">8vc fellow</A>. i also studied computer engineering at the{" "}
                 <A href={links.uiuc} className="whitespace-nowrap">university of illinois</A>.
               </p>
               <p className="italic">
