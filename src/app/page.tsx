@@ -100,7 +100,7 @@ export default function Home() {
                 i currently work on machine learning at <A href={links.anduril}>anduril</A>.
               </p>
               <p>
-                previously led inference at <A href={links.deepgrove}>deepgrove</A> and worked on drone detection at{" "}
+                previously i led inference at <A href={links.deepgrove}>deepgrove</A> and worked on drone detection at{" "}
                 <A href={links.guardianRf}>guardian rf</A>. i also studied computer engineering at the{" "}
                 <A href={links.uiuc}>university of illinois</A>.
               </p>
