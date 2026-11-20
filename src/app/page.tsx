@@ -1,73 +1,148 @@
-import type { ReactNode } from "react";
-import MeditationSculpture from "@/components/MeditationSculpture";
+import { EB_Garamond } from "next/font/google";
+import Link from "next/link";
+import type { CSSProperties, ReactNode } from "react";
+import InkFilters from "@/components/InkFilters";
+import MeditationDrawing, { brush } from "@/components/MeditationDrawing";
+import { getAllPosts } from "@/lib/blog";
+
+const garamond = EB_Garamond({ weight: ["400", "500"], style: ["normal", "italic"], subsets: ["latin"] });
+
+const PAPER = "#ece6d6";
+const INK = "#1c1a17";
+const BODY = "#24211c"; // one ink tone for all running text
+const GREEN = "#3f6a45";
 
 const links = {
-  tjhsst: "https://www.tjhsst.edu/",
-  uiuc: "https://illinois.edu/",
-  khoj: "https://khoj.dev/",
-  guardianRf: "https://www.guardianrf.com/",
-  deepgrove: "https://www.deepgrove.com/",
   anduril: "https://www.anduril.com/",
-  eightVc: "https://www.8vc.com/",
-  yCombinator: "https://www.ycombinator.com/",
+  deepgrove: "https://www.deepgrove.com/",
+  guardianRf: "https://www.guardianrf.com/",
+  uiuc: "https://illinois.edu/",
 };
 
-function Keyword({
-  href,
-  children,
-}: {
-  href: string;
-  children: ReactNode;
-}) {
-  return (
-    <a
-      className="font-medium text-[var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ink)]"
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+const socials = [
+  { label: "twitter", href: "https://x.com/raghav_tiru" },
+  { label: "github", href: "https://github.com/MythicalCow" },
+];
+
+const shortTitles: Record<string, string> = {
+  "maple-inference": "running a 20b llm on a mac mini",
+  "making-reactive-diffusion-systems-faster": "faster reaction-diffusion in triton",
+  "inferencing-transformers-in-real-time": "real-time transformer inference in cuda",
+};
+
+const linkStyle: CSSProperties = {
+  textDecoration: "underline",
+  textDecorationThickness: "1px",
+  textUnderlineOffset: "0.22em",
+  textDecorationColor: GREEN,
+};
+
+function A({ href, children, className = "" }: { href: string; children: ReactNode; className?: string }) {
+  const cls = `transition-opacity hover:opacity-60 ${className}`;
+  return href.startsWith("http") ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={cls} style={linkStyle}>
       {children}
     </a>
+  ) : (
+    <Link href={href} className={cls} style={linkStyle}>
+      {children}
+    </Link>
+  );
+}
+
+/* A hand-inked rule: one brush stroke that swells and thins, instead of a CSS border. */
+function InkRule({ seed }: { seed: number }) {
+  return (
+    <svg viewBox="0 0 1000 10" preserveAspectRatio="none" className="block h-[7px] w-full" aria-hidden>
+      <path d={brush([[2, 5.5], [250, 4.6], [520, 5.6], [780, 4.8], [998, 5.2]], 2.4, { seed, start: 0.35, end: 0.05, wobble: 0.25 })} fill={INK} opacity={0.4} />
+    </svg>
+  );
+}
+
+function Label({ children }: { children: ReactNode }) {
+  return (
+    <p className="text-[1rem] italic tracking-[0.01em]" style={{ color: GREEN }}>
+      {children}
+    </p>
   );
 }
 
 export default function Home() {
-  return (
-    <main className="home-page min-h-screen bg-[var(--bg)] selection:bg-[var(--ink)] selection:text-[var(--bg)]">
-      <section className="grid min-h-screen px-8 pb-16 pt-32 md:px-16 md:pb-20 md:pt-40 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.85fr)] lg:items-start lg:content-center lg:gap-x-14">
-        <div className="contents lg:col-start-1 lg:block">
-          <header className="order-1 mb-8 lg:order-none lg:mb-10">
-            <h1 className="text-2xl font-medium tracking-[-0.02em] text-[var(--ink)] lowercase">
-              raghav tirumale
-            </h1>
-          </header>
+  const posts = getAllPosts();
 
-          <div className="order-3 max-w-[64ch] space-y-4 text-[1.05rem] leading-[1.7] text-[var(--body)] animate-fadeUp-delay lg:order-none">
-          <p>
-            i work on ml at <Keyword href={links.anduril}>anduril</Keyword>.
-          </p>
-          <p>
-            i&apos;ve wanted to build robots since i was a kid. at <Keyword href={links.tjhsst}>tjhsst</Keyword>, i attempted humanoids with friends and built a voice agent inspired by baymax for research.
-          </p>
-          <p>
-            i finished computer engineering at <Keyword href={links.uiuc}>uiuc</Keyword> in three years, with grad classes in manycore parallel algorithms and systems for generative ai. while there, i worked on applied ai at <Keyword href={links.khoj}>khoj</Keyword> (<Keyword href={links.yCombinator}>yc</Keyword> s23), built drone detection from raw rf at <Keyword href={links.guardianRf}>guardian rf</Keyword> (<Keyword href={links.yCombinator}>yc</Keyword> s24), and led inference at <Keyword href={links.deepgrove}>deepgrove</Keyword> (<Keyword href={links.yCombinator}>yc</Keyword> s25), pushing a frontier 20b parameter model past 200 tokens per second on commodity hardware.
-          </p>
-          <p>
-            i care most about machine intelligence and how to make it more reliable, performant, and widespread. as an <Keyword href={links.eightVc}>8vc fellow</Keyword>, i got a chance to hear from founders of some of the most ambitious companies.
-          </p>
-          <p>
-            outside work, i meditate, train, cook, drink tea, have long conversations with friends, and occasionally write.
-          </p>
-            <p className="pt-1 text-[var(--dim)]">
-              tirumale [dot] raghav [at] gmail [dot] com
-            </p>
-          </div>
+  return (
+    <main
+      className={`relative flex min-h-screen items-center px-6 py-12 md:px-14 md:py-16 ${garamond.className}`}
+      style={{ background: PAPER, color: INK, ["--paper" as string]: PAPER }}
+    >
+      <style>{`html,body{background:${PAPER}}`}</style>
+      <InkFilters />
+
+      {/* newsprint grain */}
+      <svg className="pointer-events-none fixed inset-0 h-full w-full" aria-hidden style={{ mixBlendMode: "multiply", opacity: 0.45 }}>
+        <rect width="100%" height="100%" filter="url(#paper-grain)" />
+      </svg>
+
+      {/* type scale: display 2.25rem · body 1.125rem · small 1rem — nothing else */}
+      <article className="relative mx-auto w-full max-w-[36rem]">
+        {/* a small woodcut: black key plate, green foliage plate, gently moving */}
+        <div className="mx-auto mb-10 w-[180px] sm:w-[210px]" style={{ filter: "url(#ink-press-solid)" }}>
+          <MeditationDrawing foliage={GREEN} animated />
         </div>
 
-        <MeditationSculpture
-          className="animate-fadeUp-delay2 order-2 mb-8 h-[330px] sm:h-[390px] lg:order-none lg:col-start-2 lg:row-start-1 lg:mb-0 lg:h-[min(70vh,650px)] lg:self-center"
-        />
-      </section>
+        <div className="space-y-10 text-[1.125rem] leading-[1.65]" style={{ filter: "url(#ink-text)", color: BODY }}>
+          <header className="space-y-4">
+            <h1 className="text-[2.25rem] font-medium leading-[1.1]" style={{ color: INK }}>
+              raghav tirumale
+            </h1>
+            <div className="space-y-3">
+              <p>
+                i currently work on machine learning at <A href={links.anduril}>anduril</A>.
+              </p>
+              <p>
+                previously led inference at <A href={links.deepgrove}>deepgrove</A> and worked on drone detection at{" "}
+                <A href={links.guardianRf}>guardian rf</A>. i also studied computer engineering at the{" "}
+                <A href={links.uiuc}>university of illinois</A>.
+              </p>
+              <p className="italic">
+                other interests: meditation, world history, cooking, anything in nature.
+              </p>
+            </div>
+          </header>
+
+          {/* writing */}
+          <section className="space-y-4">
+            <InkRule seed={801} />
+            <div className="space-y-2">
+              <Label>technical</Label>
+              <ul className="space-y-1.5">
+                {posts.map((post) => (
+                  <li key={post.slug}>
+                    <A href={post.external ?? `/blog/${post.slug}`}>{shortTitles[post.slug] ?? post.title}</A>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          {/* contact */}
+          <footer className="space-y-4">
+            <InkRule seed={802} />
+            <div className="space-y-1">
+              <p className="flex flex-wrap gap-x-5">
+                {socials.map(({ label, href }) => (
+                  <A key={label} href={href}>
+                    {label}
+                  </A>
+                ))}
+              </p>
+              <p className="text-[1rem]">
+                tirumale [dot] raghav [at] gmail [dot] com
+              </p>
+            </div>
+          </footer>
+        </div>
+      </article>
     </main>
   );
 }

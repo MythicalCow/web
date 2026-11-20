@@ -19,6 +19,8 @@ export default function Navigation() {
     { label: "writing", href: "/blog" },
   ];
 
+  if (pathname === "/") return null;
+
   return (
     <div className="fixed top-0 z-50 w-full bg-[var(--bg)]/80 backdrop-blur-sm">
       <nav className="mx-auto max-w-none px-8 md:px-16 py-5">

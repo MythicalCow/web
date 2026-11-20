@@ -42,9 +42,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preload" href="/sculptures/meditator.glb" as="fetch" crossOrigin="anonymous" />
-      </head>
       <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <Navigation />
         {children}
