@@ -17,6 +17,7 @@ const links = {
   deepgrove: "https://www.deepgrove.com/",
   guardianRf: "https://www.guardianrf.com/",
   uiuc: "https://illinois.edu/",
+  eightVc: "https://www.8vc.com/",
 };
 
 const socials = [
@@ -97,15 +98,16 @@ export default function Home() {
             </h1>
             <div className="space-y-3">
               <p>
-                i currently work on machine learning at <A href={links.anduril}>anduril</A>.
+                i currently work on machine learning at <A href={links.anduril} className="whitespace-nowrap">anduril</A> and am an{" "}
+                <A href={links.eightVc} className="whitespace-nowrap">8vc fellow</A>.
               </p>
               <p>
-                previously i led inference at <A href={links.deepgrove}>deepgrove</A> and worked on drone detection at{" "}
-                <A href={links.guardianRf}>guardian rf</A>. i also studied computer engineering at the{" "}
-                <A href={links.uiuc}>university of illinois</A>.
+                previously i led inference at <A href={links.deepgrove} className="whitespace-nowrap">deepgrove</A> and worked on drone detection at{" "}
+                <A href={links.guardianRf} className="whitespace-nowrap">guardian rf</A>. i also studied computer engineering at the{" "}
+                <A href={links.uiuc} className="whitespace-nowrap">university of illinois</A>.
               </p>
               <p className="italic">
-                other interests: meditation, world history, cooking, anything in nature.
+                other interests: meditation, drinking tea, cooking, spending time in nature.
               </p>
             </div>
           </header>
