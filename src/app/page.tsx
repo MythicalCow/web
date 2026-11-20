@@ -101,8 +101,8 @@ export default function Home() {
                 i currently work on machine learning at <A href={links.anduril} className="whitespace-nowrap">anduril</A>.
               </p>
               <p>
-                previously i led inference at <A href={links.deepgrove} className="whitespace-nowrap">deepgrove</A>, worked on drone detection at{" "}
-                <A href={links.guardianRf} className="whitespace-nowrap">guardian rf</A>, and was an{" "}
+                previously i led inference at <A href={links.deepgrove} className="whitespace-nowrap">deepgrove</A> <span className="whitespace-nowrap">(yc s25)</span>, worked on drone detection at{" "}
+                <A href={links.guardianRf} className="whitespace-nowrap">guardian rf</A> <span className="whitespace-nowrap">(yc s24)</span>, and was an{" "}
                 <A href={links.eightVc} className="whitespace-nowrap">8vc fellow</A>.
               </p>
               <p>
