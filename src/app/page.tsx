@@ -109,7 +109,7 @@ export default function Home() {
                 <span className="whitespace-nowrap">(yc s23)</span>.
               </p>
               <p>
-                i studied computer engineering at <A href={links.uiuc}>uiuc</A> with a focus on ml, systems, and parallel computing.
+                i studied computer engineering at <A href={links.uiuc}>uiuc</A> with a focus on systems, parallel computing, and ml.
               </p>
               <p className="italic">
                 other interests: meditation, drinking tea, cooking, spending time in nature.
