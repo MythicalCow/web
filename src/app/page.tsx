@@ -18,6 +18,7 @@ const links = {
   guardianRf: "https://www.guardianrf.com/",
   uiuc: "https://illinois.edu/",
   eightVc: "https://www.8vc.com/",
+  khoj: "https://khoj.dev/",
 };
 
 const socials = [
@@ -102,7 +103,8 @@ export default function Home() {
               </p>
               <p>
                 previously i led inference at <A href={links.deepgrove} className="whitespace-nowrap">deepgrove</A> <span className="whitespace-nowrap">(yc s25)</span>, worked on drone detection at{" "}
-                <A href={links.guardianRf} className="whitespace-nowrap">guardian rf</A> <span className="whitespace-nowrap">(yc s24)</span>, and was an{" "}
+                <A href={links.guardianRf} className="whitespace-nowrap">guardian rf</A> <span className="whitespace-nowrap">(yc s24)</span> and applied ai at{" "}
+                <A href={links.khoj} className="whitespace-nowrap">khoj</A> <span className="whitespace-nowrap">(yc s23)</span>, and was an{" "}
                 <A href={links.eightVc} className="whitespace-nowrap">8vc fellow</A>.
               </p>
               <p>
