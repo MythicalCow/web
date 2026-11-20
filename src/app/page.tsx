@@ -96,7 +96,7 @@ export default function Home() {
             <h1 className="text-[2.25rem] font-medium leading-[1.1]" style={{ color: INK }}>
               raghav tirumale
             </h1>
-            <div className="space-y-3">
+            <div className="space-y-3 [text-wrap:pretty]">
               <p>
                 i currently work on machine learning at <A href={links.anduril} className="whitespace-nowrap">anduril</A>.
               </p>
