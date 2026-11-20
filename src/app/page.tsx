@@ -103,7 +103,7 @@ export default function Home() {
               </p>
               <p>
                 previously i was an <A href={links.eightVc} className="whitespace-nowrap">8vc fellow</A>, led inference at{" "}
-                <A href={links.deepgrove} className="whitespace-nowrap">deepgrove</A> <span className="whitespace-nowrap">(yc s25)</span>, and worked on drone
+                <A href={links.deepgrove} className="whitespace-nowrap">deepgrove</A> <span className="whitespace-nowrap">(yc s25)</span>, worked on drone
                 detection at <A href={links.guardianRf} className="whitespace-nowrap">guardian rf</A>{" "}
                 <span className="whitespace-nowrap">(yc s24)</span>, and applied ai at <A href={links.khoj} className="whitespace-nowrap">khoj</A>{" "}
                 <span className="whitespace-nowrap">(yc s23)</span>.
