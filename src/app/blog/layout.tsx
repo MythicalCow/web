@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
+import { InkShell } from "@/components/InkPage";
 
 export const metadata: Metadata = {
   title: "Writing",
-  description:
-    "Notes on GPU kernels, processor design, and making machine intelligence run fast.",
+  description: "Notes on GPU kernels, processor design, and making machine intelligence run fast.",
 };
 
-export default function BlogLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function BlogLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--body)]">
-      <div className="mx-auto max-w-none px-8 pb-32 pt-32 md:px-16 md:pb-36 md:pt-40 lg:pt-64">
-        <main>{children}</main>
-      </div>
-    </div>
+    <InkShell>
+      <main className="px-6 py-12 md:px-14 md:py-16">{children}</main>
+    </InkShell>
   );
 }

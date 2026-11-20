@@ -19,7 +19,7 @@ export default function Navigation() {
     { label: "writing", href: "/blog" },
   ];
 
-  if (pathname === "/") return null;
+  if (pathname === "/" || pathname?.startsWith("/blog")) return null;
 
   return (
     <div className="fixed top-0 z-50 w-full bg-[var(--bg)]/80 backdrop-blur-sm">

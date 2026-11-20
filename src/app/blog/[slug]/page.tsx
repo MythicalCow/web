@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { Metadata } from "next";
 import { getPostBySlug, getAllPostSlugs, formatDate } from "@/lib/blog";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
+import { A, INK, InkRule } from "@/components/InkPage";
 
 export async function generateMetadata({
   params,
@@ -57,32 +57,30 @@ export default async function BlogPost({
   }
 
   return (
-    <article className="mx-auto max-w-[70ch]">
-      <Link
-        href="/blog"
-        className="utility text-link mb-12 inline-block text-[var(--dim)]"
-      >
-        ← writing
-      </Link>
-
-      <header className="mb-12 border-b border-[var(--line)] pb-10">
-        <h1 className="text-3xl sm:text-4xl font-medium tracking-[-0.02em] leading-tight mb-4 text-[var(--ink)]">
-          {post.title}
+    <article className="mx-auto w-full max-w-[40rem] text-[1.125rem] leading-[1.7]">
+      <header className="mb-10 space-y-4" style={{ filter: "url(#ink-text)" }}>
+        <p className="text-[1rem]">
+          <A href="/">← raghav tirumale</A>
+        </p>
+        <h1 className="text-[2.25rem] font-medium leading-[1.15] [text-wrap:balance]" style={{ color: INK }}>
+          {post.title.toLowerCase()}
         </h1>
-        <div className="utility text-[var(--dim)]">
-          {formatDate(post.date)} · {post.readTime} · {post.author}
-        </div>
+        <p className="text-[1rem] italic">
+          {formatDate(post.date)} · {post.readTime}
+        </p>
       </header>
 
-      <MarkdownRenderer content={post.content} />
+      <InkRule seed={804} />
 
-      <footer className="mt-16 pt-8">
-        <Link
-          href="/blog"
-          className="utility text-link text-[var(--dim)]"
-        >
-          ← writing
-        </Link>
+      <div className="mt-10">
+        <MarkdownRenderer content={post.content} />
+      </div>
+
+      <footer className="mt-16 space-y-4 text-[1rem]">
+        <InkRule seed={805} />
+        <p>
+          <A href="/">← raghav tirumale</A>
+        </p>
       </footer>
     </article>
   );
