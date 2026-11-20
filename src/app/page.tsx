@@ -102,10 +102,11 @@ export default function Home() {
                 i currently work on machine learning at <A href={links.anduril} className="whitespace-nowrap">anduril</A>.
               </p>
               <p>
-                previously i led inference at <A href={links.deepgrove} className="whitespace-nowrap">deepgrove</A> <span className="whitespace-nowrap">(yc s25)</span>, worked on drone detection at{" "}
-                <A href={links.guardianRf} className="whitespace-nowrap">guardian rf</A> <span className="whitespace-nowrap">(yc s24)</span> and applied ai at{" "}
-                <A href={links.khoj} className="whitespace-nowrap">khoj</A> <span className="whitespace-nowrap">(yc s23)</span>, and was an{" "}
-                <A href={links.eightVc} className="whitespace-nowrap">8vc fellow</A>.
+                previously i was an <A href={links.eightVc} className="whitespace-nowrap">8vc fellow</A>, led inference at{" "}
+                <A href={links.deepgrove} className="whitespace-nowrap">deepgrove</A> <span className="whitespace-nowrap">(yc s25)</span>, and worked on drone
+                detection at <A href={links.guardianRf} className="whitespace-nowrap">guardian rf</A>{" "}
+                <span className="whitespace-nowrap">(yc s24)</span> and applied ai at <A href={links.khoj} className="whitespace-nowrap">khoj</A>{" "}
+                <span className="whitespace-nowrap">(yc s23)</span>.
               </p>
               <p>
                 i studied computer engineering at the <A href={links.uiuc} className="whitespace-nowrap">university of illinois</A>.
