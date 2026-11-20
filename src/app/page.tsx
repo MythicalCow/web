@@ -14,7 +14,7 @@ const GREEN = "#3f6a45";
 
 const links = {
   anduril: "https://www.anduril.com/",
-  deepgrove: "https://www.deepgrove.com/",
+  deepgrove: "https://deepgrove.ai/",
   guardianRf: "https://www.guardianrf.com/",
   uiuc: "https://illinois.edu/",
   eightVc: "https://www.8vc.com/",
